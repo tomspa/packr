@@ -20,6 +20,7 @@ class Tetromino {
 
     create() {
         let tetromino = document.createElement("table");
+        tetromino.draggable = true;
         tetromino.classList.add("tetromino");
 
         for (let y = 0; y < this.positions.length; y++) {

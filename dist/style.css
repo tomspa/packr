@@ -7,6 +7,10 @@ td {
     height: 20px;
 }
 
+.filled {
+    cursor: move;
+}
+
 .truck {
     background-color: black;
 }
