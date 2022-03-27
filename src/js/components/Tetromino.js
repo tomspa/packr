@@ -19,11 +19,11 @@ class Tetromino {
     }
 
     create() {
-        let table = document.createElement("table");
-        table.classList.add("tetromino");
+        let tetromino = document.createElement("table");
+        tetromino.classList.add("tetromino");
 
         for (let y = 0; y < this.positions.length; y++) {
-            let tr = table.insertRow(y);
+            let tr = tetromino.insertRow(y);
 
             for (let x = 0; x < this.positions[y].length; x++) {
                 let td = tr.insertCell();
@@ -34,7 +34,7 @@ class Tetromino {
                 }
             }
         }
-        return table;
+        return tetromino;
     }
 }
 
