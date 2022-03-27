@@ -13,7 +13,7 @@ function start() {
     let tet3 = new Tetromino(TetrominoShape.O, CargoType.Pallets);
     let tet4 = new Tetromino(TetrominoShape.I, CargoType.General);
 
-    let truck = new Truck(5, 10, 1, CargoType.Pallets);
+    let truck = new Truck(5, 10, 1, CargoType.General);
 
     holder.appendChild(tet.create());
     holder.appendChild(tet1.create());

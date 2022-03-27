@@ -35,6 +35,12 @@ class Tetromino {
                 }
             }
         }
+        tetromino.addEventListener("dragstart", function() {
+            tetromino.classList.add("dragging");
+        });
+        tetromino.addEventListener("dragend", function() {
+            tetromino.classList.remove("dragging");
+        });
         return tetromino;
     }
 }
