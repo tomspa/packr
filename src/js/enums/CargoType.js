@@ -15,19 +15,14 @@ class CargoType {
         switch(type) {
             case CargoType.Cold:
                 return this.ColdColor;
-                break;
             case CargoType.Fragile:
                 return this.FragileColor;
-                break;
             case CargoType.General:
                 return this.GeneralColor;
-                break;
             case CargoType.Pallets:
                 return this.PalletsColor;
-                break;
             case CargoType.Quick:
                 return this.QuickColor;
-                break;
         }
     }
 }

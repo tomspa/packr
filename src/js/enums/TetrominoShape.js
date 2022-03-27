@@ -45,25 +45,18 @@ class TetrominoShape {
             [1, 1, 0, 0]
         ];
 
-    static TColor = "FF"
-
     static GetPositionByType(type) {
         switch(type) {
             case TetrominoShape.Z:
                 return this.ZPositions;
-                break;
             case TetrominoShape.T:
                 return this.TPositions;
-                break;
             case TetrominoShape.I:
                 return this.IPositions;
-                break;
             case TetrominoShape.L:
                 return this.LPositions;
-                break;
             case TetrominoShape.O:
                 return this.OPositions;
-                break;
         }
     }
 }

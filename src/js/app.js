@@ -4,11 +4,11 @@ import CargoType from './enums/CargoType.js';
 
 function start() {
     let holder = document.getElementById("holder");
-    let tet = new Tetromino(TetrominoShape.Z, "ueceucjec", CargoType.Cold);
-    let tet1 = new Tetromino(TetrominoShape.L, "ueceucjec", CargoType.Fragile);
-    let tet2 = new Tetromino(TetrominoShape.T, "ueceucjec", CargoType.Quick);
-    let tet3 = new Tetromino(TetrominoShape.O, "ueceucjec", CargoType.Pallets);
-    let tet4 = new Tetromino(TetrominoShape.I, "ueceucjec", CargoType.General);
+    let tet = new Tetromino(TetrominoShape.Z, CargoType.Cold);
+    let tet1 = new Tetromino(TetrominoShape.L, CargoType.Fragile);
+    let tet2 = new Tetromino(TetrominoShape.T, CargoType.Quick);
+    let tet3 = new Tetromino(TetrominoShape.O, CargoType.Pallets);
+    let tet4 = new Tetromino(TetrominoShape.I, CargoType.General);
 
     holder.appendChild(tet.create());
     holder.appendChild(tet1.create());
