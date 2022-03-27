@@ -1,0 +1,25 @@
+{
+  "name": "packr",
+  "version": "1.0.0",
+  "description": "packr",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomspa/packr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomspa/packr/issues"
+  },
+  "homepage": "https://github.com/tomspa/packr#readme",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^6.0.43"
+  }
+}
