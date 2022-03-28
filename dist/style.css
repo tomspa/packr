@@ -121,13 +121,13 @@ conveyor-belt .green-button {
     left: 10px;
 }
 
-conveyor-belt .green-button:hover {
+.green-button:hover {
     background: #3ea63e;
 }
 
-conveyor-belt .green-button:disabled {
+.green-button:disabled {
     opacity: 0.5;
-    cursor: wait;
+    cursor: no-drop;
 }
 
 conveyor-belt tet-romino {
@@ -178,4 +178,27 @@ conveyor-belt .belt .roller-end {
 hall-div {
     display: flex;
     flex-direction: row;
+}
+
+hall-manager {
+    display: block;
+    height: 300px;
+    border: 1px dashed gray;
+}
+
+.hall-manager-buttons {
+    display: inline-block;
+    width: 200px;
+    padding: 20px;
+    vertical-align: top;
+}
+
+.hall-manager-buttons button {
+    margin: 5px;
+}
+
+.hall-holder {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
 }

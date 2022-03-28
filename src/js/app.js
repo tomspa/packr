@@ -1,6 +1,6 @@
 import Tetromino from './components/Tetromino.js';
 import Hall from './components/Hall.js';
-import Hall from './components/HallManager.js';
+import HallManager from './components/HallManager.js';
 import FormWindow from './components/Form.js';
 import CargoType from './enums/CargoType.js';
 import Truck from './components/Truck.js';
