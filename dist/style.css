@@ -8,12 +8,69 @@ td {
     height: 20px;
 }
 
+
+/* --------------------- modal styling ------------------------*/
+
+.modal {
+    display: none;
+    position: fixed;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.modal .green-button {
+    margin-top: 10px;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    margin: auto;
+    width: 75%;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.modal-header span {
+    cursor: pointer;
+    font-size: large;
+}
+
+.input-fields,
+.dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-buttons {
+    display: flex;
+    flex-direction: row;
+    font-size: small;
+}
+
+.radio-buttons div {
+    padding: 10px;
+}
+
 .filled {
     cursor: move;
 }
 
 .truck {
     background-color: black;
+    padding: 30px;
+    background-clip: content-box;
 }
 
 .truck td {
@@ -63,17 +120,17 @@ conveyor-belt .green-button {
     left: 10px;
 }
 
-conveyor-belt .green-button:hover {
+.green-button:hover {
     background: #3ea63e;
 }
 
-conveyor-belt .green-button:disabled {
+.green-button:disabled {
     opacity: 0.5;
-    cursor: wait;
+    cursor: no-drop;
 }
 
 conveyor-belt tet-romino {
-    bottom: 34px;
+    bottom: 36px;
     position: absolute;
     animation: move 5s linear;
 }
@@ -115,3 +172,34 @@ conveyor-belt .belt .roller-end {
 }
 
 
+/* --------------------- Hall ------------------------*/
+
+hall-div {
+    display: none;
+    flex-direction: row;
+    width: inherit;
+    height: inherit;
+}
+
+hall-manager {
+    display: block;
+    height: 300px;
+    border: 1px dashed gray;
+}
+
+.hall-manager-buttons {
+    display: inline-block;
+    width: 200px;
+    padding: 20px;
+    vertical-align: top;
+}
+
+.hall-manager-buttons button {
+    margin: 5px;
+}
+
+.hall-holder {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
