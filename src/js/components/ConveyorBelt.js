@@ -50,7 +50,6 @@ class ConveyorBelt extends HTMLElement {
         let tet = new Tetromino(TetrominoShape.GetRandomTetroShape(), CargoType.GetRandomCargoType());
 
         this.appendChild(tet.create());
-
     }
 }
 
