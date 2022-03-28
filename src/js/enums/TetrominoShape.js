@@ -45,6 +45,21 @@ class TetrominoShape {
             [1, 1, 0, 0]
         ];
 
+    static GetTetroShapeByNumber(number) {
+        switch(number) {
+            case 0:
+                return TetrominoShape.Z;
+            case 1:
+                return TetrominoShape.T;
+            case 2:
+                return TetrominoShape.I;
+            case 3:
+                return TetrominoShape.L;
+            case 4:
+                return TetrominoShape.O;
+        }
+    }
+
     static GetPositionByType(type) {
         switch(type) {
             case TetrominoShape.Z:
@@ -58,6 +73,10 @@ class TetrominoShape {
             case TetrominoShape.O:
                 return this.OPositions;
         }
+    }
+
+    static GetRandomTetroShape() {
+        return this.GetTetroShapeByNumber(Math.floor(Math.random() * 5));
     }
 }
 
