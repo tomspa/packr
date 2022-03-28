@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 td {
@@ -7,6 +8,110 @@ td {
     height: 20px;
 }
 
-td .filled {
-
+.filled {
+    cursor: move;
 }
+
+.truck {
+    background-color: black;
+}
+
+.truck td {
+    width: 20px;
+    height: 20px;
+}
+
+truck-cell {
+    display: block;
+    height: 100%;
+}
+
+/* --------------------- Conveyor Belt ------------------------*/
+
+conveyor-belt {
+    width: 1000px;
+    height: 175px;
+    display: flex;
+    padding-left: 50px;
+    position: relative;
+}
+
+conveyor-belt .belt {
+    height: 36px;
+    border: 2px dashed black;
+    border-radius: 25px;
+    position: relative;
+    flex: 0 0 95%;
+    align-self: end;
+}
+
+conveyor-belt .belt .roller {
+    height: 29px;
+    width: 29px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    background-image: url("../img/cog.png");
+    background-position: center;
+    background-size: contain;
+    animation: rotate 5s linear infinite;
+}
+
+conveyor-belt .green-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+conveyor-belt .green-button:hover {
+    background: #3ea63e;
+}
+
+conveyor-belt .green-button:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+conveyor-belt tet-romino {
+    bottom: 34px;
+    position: absolute;
+    animation: move 5s linear;
+}
+
+conveyor-belt .belt .roller-start {
+    left: 2px;
+}
+
+conveyor-belt .belt .roller-end {
+    right: 2px;
+}
+
+.green-button {
+    padding: 7px 12px;
+    color: white;
+    font-size: 17px;
+    background: #5fc95f;
+    border: 2px solid green;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes move {
+    from {
+        left: 80px;
+    }
+    to {
+        left: 900px;
+    }
+}
+
+

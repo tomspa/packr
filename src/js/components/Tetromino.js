@@ -1,16 +1,18 @@
 import TetrominoShape from "../enums/TetrominoShape.js";
 import CargoType from "../enums/CargoType.js";
 
-class Tetromino {
+class Tetromino extends HTMLElement {
     shape;
     cargoType;
     positions;
     color;
 
     constructor(shape, cType) {
+        super();
         this.shape = shape;
         this.cargoType = cType;
         this.init();
+        this.listeners();
     }
 
     init() {
@@ -18,9 +20,21 @@ class Tetromino {
         this.color = CargoType.GetColorByCargoType(this.cargoType);
     }
 
+    listeners() {
+        this.addEventListener("dragstart", function(e) {
+            e.dataTransfer.setData("text/uri-list", this)
+            this.classList.add("dragging");
+        });
+
+        this.addEventListener("dragend", function() {
+            this.classList.remove("dragging");
+        });
+    }
+
     create() {
         let table = document.createElement("table");
-        table.classList.add("tetromino");
+        this.draggable = true;
+        this.classList.add("tetromino");
 
         for (let y = 0; y < this.positions.length; y++) {
             let tr = table.insertRow(y);
@@ -34,7 +48,8 @@ class Tetromino {
                 }
             }
         }
-        return table;
+        this.appendChild(table);
+        return this;
     }
 }
 
