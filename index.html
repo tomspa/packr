@@ -9,8 +9,10 @@
 </head>
 
 <body>
+    <hall-manager></hall-manager>
+    <button class="green-button" id="open-modal">Vrachtwagen maken</button>
     <div class="modal" id="modal">
-        <div class="modal-content">
+        <form class="modal-content" id="modal-content">
             <div class="modal-header">
                 <h1>Maak een vrachtwagen aan</h1>
                 <span id="close-button">&#10006;</span>
@@ -21,29 +23,29 @@
                 <label for="height">Hoogte (4 - 10)</label>
                 <input type="number" name="height" id="height" required min="4" max="10">
                 <label for="interval">Interval (0 - 20)</label>
-                <input type="number" min="0" max="20">
+                <input type="number" id="interval" min="0" max="20">
             </div>
 
             <div class="radio-buttons">
                 <div>
                     <label for="cold-trans">Koud transport</label>
-                    <input type="radio" id="cold-trans" name="trans" value="cold-trans">
+                    <input type="radio" id="cold-trans" name="trans" value="0" required checked>
                 </div>
                 <div>
-                    <label for="cold-trans">Breekbaar transport</label>
-                    <input type="radio" id="frag-trans" name="trans" value="frag-trans">
+                    <label for="frag-trans">Breekbaar transport</label>
+                    <input type="radio" id="frag-trans" name="trans" value="1" required>
                 </div>
                 <div>
-                    <label for="cold-trans">Algemeen transport</label>
-                    <input type="radio" id="norm-trans" name="trans" value="norm-trans">
+                    <label for="norm-trans">Algemeen transport</label>
+                    <input type="radio" id="norm-trans" name="trans" value="2" required>
                 </div>
                 <div>
-                    <label for="cold-trans">Pallets</label>
-                    <input type="radio" id="pal-trans" name="trans" value="pal-trans">
+                    <label for="pal-trans">Pallets</label>
+                    <input type="radio" id="pal-trans" name="trans" value="3" required>
                 </div>
                 <div>
-                    <label for="cold-trans">Snel transport</label>
-                    <input type="radio" id="fast-trans" name="trans" value="fast-trans">
+                    <label for="fast-trans">Snel transport</label>
+                    <input type="radio" id="fast-trans" name="trans" value="4" required>
                 </div>
             </div>
 
@@ -65,9 +67,9 @@
             </select>
             </div>
             <div>
-                <button class="green-button" role="button">Maak vrachtwagen</button>
+                <input type="submit" class="green-button" role="button" id="create-truck" value="Maak vrachtwagen">
             </div>
-        </div>
+        </form>
     </div>
     <div id="holder">
         <conveyor-belt></conveyor-belt>

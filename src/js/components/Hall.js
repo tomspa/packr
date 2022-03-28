@@ -1,7 +1,6 @@
 class Hall extends HTMLElement {
     trucks;
 
-
     constructor() {
         super();
         this.init();
@@ -23,6 +22,14 @@ class Hall extends HTMLElement {
             this.trucks.remove(truck);
             this.removeChild(truck);
         }
+    }
+
+    create() {
+        let div = document.createElement("div");
+        div.classList.add("hall-holder");
+
+        this.appendChild(div);
+        return this;
     }
 }
 

@@ -21,6 +21,11 @@ td {
     height: 100%;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.modal .green-button {
+    margin-top: 10px;
 }
 
 .modal-content {
@@ -39,6 +44,7 @@ td {
 
 .modal-header span {
     cursor: pointer;
+    font-size: large;
 }
 
 .input-fields,
@@ -63,6 +69,8 @@ td {
 
 .truck {
     background-color: black;
+    padding: 30px;
+    background-clip: content-box;
 }
 
 .truck td {
@@ -123,7 +131,7 @@ conveyor-belt .green-button:disabled {
 }
 
 conveyor-belt tet-romino {
-    bottom: 34px;
+    bottom: 36px;
     position: absolute;
     animation: move 5s linear;
 }
@@ -162,4 +170,12 @@ conveyor-belt .belt .roller-end {
     to {
         left: 900px;
     }
+}
+
+
+/* --------------------- Hall ------------------------*/
+
+hall-div {
+    display: flex;
+    flex-direction: row;
 }
