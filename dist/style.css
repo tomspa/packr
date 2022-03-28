@@ -176,8 +176,10 @@ conveyor-belt .belt .roller-end {
 /* --------------------- Hall ------------------------*/
 
 hall-div {
-    display: flex;
+    display: none;
     flex-direction: row;
+    width: inherit;
+    height: inherit;
 }
 
 hall-manager {

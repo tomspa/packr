@@ -24,17 +24,19 @@ class HallManager extends HTMLElement {
         if (this.halls.length < 8) {
             let changeIndex = this.halls.length;
 
-            this.halls.push(new Hall().create());
             let btn = document.createElement("button");
             btn.classList.add("green-button");
-            btn.innerHTML = "hall " + this.halls.length;
+            btn.innerHTML = "hal " + (this.halls.length + 1);
 
             btn.onclick = () => {
                 this.changeHall(changeIndex)
             };
 
             this.buttonDiv.appendChild(btn);
-            this.hallHolder.appendChild(new Hall());
+            let hall = new Hall();
+            hall.style.display = "none";
+            this.halls.push(hall);
+            this.hallHolder.appendChild(hall);
         } else {
             this.createHallBtn.disabled = true;
         }
@@ -64,7 +66,12 @@ class HallManager extends HTMLElement {
     }
 
     changeHall(hallIndex) {
+        //old hall display none
+        this.halls[this.currentHallIndex].style.display = "none";
         this.currentHallIndex = hallIndex;
+
+        //new hall display flex
+        this.halls[this.currentHallIndex].style.display = "flex";
     }
 }
 
