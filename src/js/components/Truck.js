@@ -33,14 +33,18 @@ class Truck {
             let tr = truck.insertRow(y);
 
             for (let x = 0; x < this.width; x++) {
-                let TruckCell = document.createElement("truck-cell");
+                let truckCell = new TruckCell(x, y, this);
                 let td = tr.insertCell(x);
-                td.appendChild(TruckCell);
-                this.cells[y][x] = TruckCell;
+                td.appendChild(truckCell);
+                this.cells[y][x] = truckCell;
                 td.setAttribute("style", "border: 2px solid " + this.color);
             }
         }
         return truck;
+    }
+
+    placeTetromino(x, y, tetromino) {
+        console.log(tetromino);
     }
 }
 
