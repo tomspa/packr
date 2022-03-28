@@ -3,7 +3,8 @@ class Hall extends HTMLElement {
 
 
     constructor() {
-        init();
+        super();
+        this.init();
     }
 
     init() {
@@ -24,3 +25,5 @@ class Hall extends HTMLElement {
         }
     }
 }
+
+export default Hall;
