@@ -1,8 +1,13 @@
 import Tetromino from './components/Tetromino.js';
 import TetrominoShape from './enums/TetrominoShape.js';
 import CargoType from './enums/CargoType.js';
+import FormWindow from './components/Form.js';
 
 function start() {
+
+    let modal = new FormWindow();
+
+
     let holder = document.getElementById("holder");
     let tet = new Tetromino(TetrominoShape.Z, CargoType.Cold);
     let tet1 = new Tetromino(TetrominoShape.L, CargoType.Fragile);

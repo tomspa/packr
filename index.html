@@ -1,14 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="module" src="src/js/app.js" defer></script>
     <link rel="stylesheet" href="dist/style.css">
 </head>
+
 <body>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Maak een vrachtwagen aan</h1>
+                <span id="close-button">&#10006;</span>
+            </div>
+            <div class="input-fields">
+                <label for="width">Breedte (4 - 10)</label>
+                <input type="number" id="width" name="width" required min="4" max="10">
+                <label for="height">Hoogte (4 - 10)</label>
+                <input type="number" name="height" id="height" required min="4" max="10">
+                <label for="interval">Interval (0 - 20)</label>
+                <input type="number" min="0" max="20">
+            </div>
+
+            <div class="radio-buttons">
+                <div>
+                    <label for="cold-trans">Koud transport</label>
+                    <input type="radio" id="cold-trans" name="trans" value="cold-trans">
+                </div>
+                <div>
+                    <label for="cold-trans">Breekbaar transport</label>
+                    <input type="radio" id="frag-trans" name="trans" value="frag-trans">
+                </div>
+                <div>
+                    <label for="cold-trans">Algemeen transport</label>
+                    <input type="radio" id="norm-trans" name="trans" value="norm-trans">
+                </div>
+                <div>
+                    <label for="cold-trans">Pallets</label>
+                    <input type="radio" id="pal-trans" name="trans" value="pal-trans">
+                </div>
+                <div>
+                    <label for="cold-trans">Snel transport</label>
+                    <input type="radio" id="fast-trans" name="trans" value="fast-trans">
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <label for="provinces">Kies één of meerdere provincies</label>
+                <select multiple name="provinces" id="provinces">
+                <option value="groningen">Groningen</option>
+                <option value="friesland">Friesland</option>
+                <option value="drenthe">Drenthe</option>
+                <option value="overijssel">Overijssel</option>
+                <option value="flevoland">Flevoland</option>
+                <option value="gelderland">Gelderland</option>
+                <option value="utrecht">Utrecht</option>
+                <option value="noord-holland">Noord-holland</option>
+                <option value="zuid-holland">Zuid-holland</option>
+                <option value="zeeland">Zeeland</option>
+                <option value="noord-brabant">Noord-brabant</option>
+                <option value="limburg">Limburg</option>
+            </select>
+            </div>
+            <div>
+                <button class="green-button" role="button">Maak vrachtwagen</button>
+            </div>
+        </div>
+    </div>
     <div id="holder">
 
     </div>
 </body>
+
 </html>
