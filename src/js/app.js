@@ -6,6 +6,7 @@ import CargoType from './enums/CargoType.js';
 import Truck from './components/Truck.js';
 import TruckCell from './components/TruckCell.js';
 import ConveyorBelt from "./components/ConveyorBelt.js";
+import WeatherApi from './components/WeatherApi.js';
 
 function start() {
     customElements.define("hall-div", Hall);
@@ -13,6 +14,7 @@ function start() {
     customElements.define("tet-romino", Tetromino);
     customElements.define("truck-cell", TruckCell);
     customElements.define("conveyor-belt", ConveyorBelt);
+    customElements.define("weather-api", WeatherApi);
 
     let modal = new FormWindow();
     let btn = document.getElementById("open-modal");

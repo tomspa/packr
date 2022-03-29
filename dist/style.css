@@ -83,6 +83,7 @@ truck-cell {
     height: 100%;
 }
 
+
 /* --------------------- Conveyor Belt ------------------------*/
 
 conveyor-belt {
@@ -202,4 +203,38 @@ hall-manager {
     display: inline-block;
     height: 100%;
     vertical-align: top;
+}
+
+
+/* --------------------- Hall ------------------------*/
+
+.weather-api-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.weather-api-wrapper input {
+    width: 200px;
+    height: fit-content;
+    font-size: 30px;
+    margin: 5px;
+}
+
+.weather-api-wrapper label {
+    font-size: 20px;
+}
+
+.weather-api-wrapper h1 {
+    margin: 0;
+}
+
+.weather-api-wrapper div {
+    margin: 0;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
