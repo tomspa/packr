@@ -9,14 +9,77 @@
 </head>
 
 <body>
-    <conveyor-belt></conveyor-belt>
-    <conveyor-belt></conveyor-belt>
-    <conveyor-belt></conveyor-belt>
-    <conveyor-belt></conveyor-belt>
-    <conveyor-belt></conveyor-belt>
+    <hall-manager></hall-manager>
+    <button class="green-button" id="open-modal">Vrachtwagen maken</button>
+    <div class="modal" id="modal">
+        <form class="modal-content" id="modal-content">
+            <div class="modal-header">
+                <h1>Maak een vrachtwagen aan</h1>
+                <span id="close-button">&#10006;</span>
+            </div>
+            <div class="input-fields">
+                <label for="width">Breedte (4 - 10)</label>
+                <input type="number" id="width" name="width" required min="4" max="10">
+                <label for="height">Hoogte (4 - 10)</label>
+                <input type="number" name="height" id="height" required min="4" max="10">
+                <label for="interval">Interval (0 - 20)</label>
+                <input type="number" id="interval" min="0" max="20">
+            </div>
 
-    <div id="holder">
+            <div class="radio-buttons">
+                <div>
+                    <label for="cold-trans">Koud transport</label>
+                    <input type="radio" id="cold-trans" name="trans" value="0" required checked>
+                </div>
+                <div>
+                    <label for="frag-trans">Breekbaar transport</label>
+                    <input type="radio" id="frag-trans" name="trans" value="1" required>
+                </div>
+                <div>
+                    <label for="norm-trans">Algemeen transport</label>
+                    <input type="radio" id="norm-trans" name="trans" value="2" required>
+                </div>
+                <div>
+                    <label for="pal-trans">Pallets</label>
+                    <input type="radio" id="pal-trans" name="trans" value="3" required>
+                </div>
+                <div>
+                    <label for="fast-trans">Snel transport</label>
+                    <input type="radio" id="fast-trans" name="trans" value="4" required>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <label for="provinces">Kies één of meerdere provincies</label>
+                <select multiple name="provinces" id="provinces">
+                <option value="groningen">Groningen</option>
+                <option value="friesland">Friesland</option>
+                <option value="drenthe">Drenthe</option>
+                <option value="overijssel">Overijssel</option>
+                <option value="flevoland">Flevoland</option>
+                <option value="gelderland">Gelderland</option>
+                <option value="utrecht">Utrecht</option>
+                <option value="noord-holland">Noord-holland</option>
+                <option value="zuid-holland">Zuid-holland</option>
+                <option value="zeeland">Zeeland</option>
+                <option value="noord-brabant">Noord-brabant</option>
+                <option value="limburg">Limburg</option>
+            </select>
+            </div>
+            <div>
+                <input type="submit" class="green-button" role="button" id="create-truck" value="Maak vrachtwagen">
+            </div>
+        </form>
     </div>
+    <div id="holder">
+        <conveyor-belt></conveyor-belt>
+        <conveyor-belt></conveyor-belt>
+        <conveyor-belt></conveyor-belt>
+        <conveyor-belt></conveyor-belt>
+        <conveyor-belt></conveyor-belt>
+
+        <div id="holder">
+        </div>
 </body>
 
 </html>
