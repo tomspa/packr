@@ -45,7 +45,7 @@ class ConveyorBelt extends HTMLElement {
 
         setTimeout(() => {
             this.addButton.disabled = false;
-        }, 2000);
+        }, 3000);
 
         let tet = new Tetromino(TetrominoShape.GetRandomTetroShape(), CargoType.GetRandomCargoType());
 

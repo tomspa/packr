@@ -1,9 +1,11 @@
 class Hall extends HTMLElement {
     trucks;
+    hallManager;
 
-    constructor() {
+    constructor(hallManager) {
         super();
         this.init();
+        this.hallManager = hallManager;
     }
 
     init() {
@@ -26,9 +28,14 @@ class Hall extends HTMLElement {
 
     create() {
         let div = document.createElement("div");
-        div.classList.add("hall-holder");
+        div.classList.add("hall-content");
+        let hallInfo = document.createElement("div");
+        hallInfo.classList.add("hall-info");
+        hallInfo.innerHTML = "Hal " + (this.hallManager.halls.length + 1)
 
+        div.appendChild(hallInfo);
         this.appendChild(div);
+
         return this;
     }
 }

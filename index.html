@@ -11,6 +11,12 @@
 <body>
     <hall-manager></hall-manager>
     <button class="green-button" id="open-modal">Vrachtwagen maken</button>
+    <div id="holder">
+        <conveyor-belt></conveyor-belt>
+        <conveyor-belt></conveyor-belt>
+    </div>
+
+    <!--  Modal  -->
     <div class="modal" id="modal">
         <form class="modal-content" id="modal-content">
             <div class="modal-header">
@@ -52,34 +58,25 @@
             <div class="dropdown">
                 <label for="provinces">Kies één of meerdere provincies</label>
                 <select multiple name="provinces" id="provinces">
-                <option value="groningen">Groningen</option>
-                <option value="friesland">Friesland</option>
-                <option value="drenthe">Drenthe</option>
-                <option value="overijssel">Overijssel</option>
-                <option value="flevoland">Flevoland</option>
-                <option value="gelderland">Gelderland</option>
-                <option value="utrecht">Utrecht</option>
-                <option value="noord-holland">Noord-holland</option>
-                <option value="zuid-holland">Zuid-holland</option>
-                <option value="zeeland">Zeeland</option>
-                <option value="noord-brabant">Noord-brabant</option>
-                <option value="limburg">Limburg</option>
-            </select>
+                    <option value="groningen">Groningen</option>
+                    <option value="friesland">Friesland</option>
+                    <option value="drenthe">Drenthe</option>
+                    <option value="overijssel">Overijssel</option>
+                    <option value="flevoland">Flevoland</option>
+                    <option value="gelderland">Gelderland</option>
+                    <option value="utrecht">Utrecht</option>
+                    <option value="noord-holland">Noord-holland</option>
+                    <option value="zuid-holland">Zuid-holland</option>
+                    <option value="zeeland">Zeeland</option>
+                    <option value="noord-brabant">Noord-brabant</option>
+                    <option value="limburg">Limburg</option>
+                </select>
             </div>
             <div>
                 <input type="submit" class="green-button" role="button" id="create-truck" value="Maak vrachtwagen">
             </div>
         </form>
     </div>
-    <div id="holder">
-        <conveyor-belt></conveyor-belt>
-        <conveyor-belt></conveyor-belt>
-        <conveyor-belt></conveyor-belt>
-        <conveyor-belt></conveyor-belt>
-        <conveyor-belt></conveyor-belt>
-
-        <div id="holder">
-        </div>
 </body>
 
 </html>
