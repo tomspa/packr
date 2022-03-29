@@ -8,6 +8,7 @@ class Truck extends HTMLElement {
     cells;
     cargoType;
     color;
+    button;
 
     constructor(width, height, interval, cargoType) {
         super();
@@ -30,6 +31,10 @@ class Truck extends HTMLElement {
     }
 
     create() {
+        this.button = document.createElement("button")
+        this.button.innerHTML = "⯅";
+        this.button.classList.add("drive-button");
+        this.button.classList.add("blue-button");
         let image = document.createElement("div");
         image.classList.add("truck-image")
         let truck = document.createElement("table");
@@ -47,10 +52,32 @@ class Truck extends HTMLElement {
             }
         }
 
+        this.appendChild(this.button);
         this.appendChild(image);
         this.appendChild(truck);
 
+        this.listeners();
         return this;
+    }
+
+    listeners() {
+        this.button.onclick = () => {
+            this.style.animation = "dive-away 4s ease-in forwards"
+            this.button.style.display = "none";
+            setTimeout(() => {
+                this.style.animation = "dive-back 4s ease-out forwards"
+                setTimeout(() => {
+                    this.button.style.display = "block";
+                }, 4000);
+            }, (this.interval * 1000));
+        }
+
+        this.addEventListener("animationend", () => {
+
+        })
+        this.addEventListener("animationstart", () => {
+
+        })
     }
 
     placeTetromino(x, y, tetromino) {
