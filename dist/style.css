@@ -93,6 +93,7 @@ truck-cell {
 x-truck {
     display: inline-block;
     margin-right: 10px;
+    position: relative;
 }
 
 .drive-button {
@@ -108,6 +109,17 @@ x-truck .truck-image {
     background-position: top;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.timer {
+    margin-bottom: 50px;
+    font-size: 15px;
+    text-align: center;
+    left: 0;
+    right: 0;
+    position: absolute;
+    bottom: 26px;
+    z-index: -1;
 }
 
 
@@ -220,19 +232,19 @@ x-truck .blue-button {
 
 @keyframes dive-away {
     from {
-        margin-bottom: 0px;
+        padding-bottom: 0px;
     }
     to {
-        margin-bottom: 300px;
+        padding-bottom: 300px;
     }
 }
 
 @keyframes dive-back {
     from {
-        margin-bottom: 300px;
+        padding-bottom: 300px;
     }
     to {
-        margin-bottom: 0px;
+        padding-bottom: 0px;
     }
 }
 

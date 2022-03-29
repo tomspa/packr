@@ -9,6 +9,7 @@ class Truck extends HTMLElement {
     cargoType;
     color;
     button;
+    timer;
 
     constructor(width, height, interval, cargoType) {
         super();
@@ -31,6 +32,8 @@ class Truck extends HTMLElement {
     }
 
     create() {
+        this.timer = document.createElement("h1");
+        this.timer.classList.add("timer");
         this.button = document.createElement("button")
         this.button.innerHTML = "⯅";
         this.button.classList.add("drive-button");
@@ -52,6 +55,7 @@ class Truck extends HTMLElement {
             }
         }
 
+        this.appendChild(this.timer);
         this.appendChild(this.button);
         this.appendChild(image);
         this.appendChild(truck);
@@ -64,6 +68,7 @@ class Truck extends HTMLElement {
         this.button.onclick = () => {
             this.style.animation = "dive-away 4s ease-in forwards"
             this.button.style.display = "none";
+            this.timerCount();
             setTimeout(() => {
                 this.style.animation = "dive-back 4s ease-out forwards"
                 setTimeout(() => {
@@ -72,12 +77,29 @@ class Truck extends HTMLElement {
             }, (this.interval * 1000));
         }
 
-        this.addEventListener("animationend", () => {
 
-        })
-        this.addEventListener("animationstart", () => {
 
-        })
+    }
+
+    timerCount() {
+        let countDownDate = new Date().getTime() + (this.interval * 1000);
+        let x = setInterval(() => {
+
+            let now = new Date().getTime();
+
+            let distance = countDownDate - now;
+
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance <= 0) {
+                clearInterval(x);
+                return;
+            }
+            this.timer.innerHTML = minutes + "m " + seconds + "s ";
+        }, 200);
     }
 
     placeTetromino(x, y, tetromino) {
