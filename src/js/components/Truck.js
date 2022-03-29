@@ -20,6 +20,7 @@ class Truck {
     init() {
         this.color = CargoType.GetColorByCargoType(this.cargoType);
         this.cells = new Array();
+
         for (let y = 0; y < this.height; y++) {
             this.cells[y] = new Array(this.width);
         }

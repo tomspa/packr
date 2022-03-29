@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script type="module" src="src/js/app.js"></script>
+    <script type="module" src="src/js/app.js" defer></script>
     <link rel="stylesheet" href="dist/style.css">
 </head>
 
 <body>
     <hall-manager></hall-manager>
-    <button class="green-button" id="open-modal">Vrachtwagen maken</button>
     <div id="holder">
         <conveyor-belt></conveyor-belt>
         <conveyor-belt></conveyor-belt>
     </div>
+    <
 
     <!--  Modal  -->
-    <div class="modal" id="modal">
+    <form-window class="modal" id="modal">
         <form class="modal-content" id="modal-content">
             <div class="modal-header">
                 <h1>Maak een vrachtwagen aan</h1>
@@ -76,7 +76,7 @@
                 <input type="submit" class="green-button" role="button" id="create-truck" value="Maak vrachtwagen">
             </div>
         </form>
-    </div>
+    </form-window>
 </body>
 
 </html>

@@ -6,6 +6,7 @@ class HallManager extends HTMLElement {
     createHallBtn;
     currentHallIndex;
     hallHolder;
+    modal;
 
     constructor() {
         super();
@@ -26,7 +27,7 @@ class HallManager extends HTMLElement {
 
             let hallChangeBtn = document.createElement("button");
             hallChangeBtn.classList.add("blue-button");
-            hallChangeBtn.innerHTML = "hal " + (this.halls.length + 1);
+            hallChangeBtn.innerHTML = "Hal " + (this.halls.length + 1);
 
             hallChangeBtn.onclick = () => {
                 this.changeHall(changeIndex)

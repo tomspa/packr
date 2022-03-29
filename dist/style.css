@@ -188,16 +188,23 @@ conveyor-belt .belt .roller-end {
 
 hall-div {
     display: none;
-    flex-direction: row;
     width: inherit;
     height: inherit;
 }
 
 hall-manager {
     display: block;
-    height: 270px;
+    height: 250px;
     border: 1px dashed gray;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+hall-manager .create-truck {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
 }
 
 .hall-manager-buttons {
@@ -205,6 +212,7 @@ hall-manager {
     width: 180px;
     padding: 5px;
     vertical-align: top;
+    float: left;
 }
 
 .hall-manager-buttons button {
@@ -212,15 +220,16 @@ hall-manager {
 }
 
 .hall-holder {
-    display: inline-block;
     height: 100%;
     vertical-align: top;
-    position: relative;
+    float: none;
+    overflow: hidden;
+    margin-right: 190px;
 }
 
 .hall-holder .hall-info {
     position: absolute;
-    left: 10px;
+    left: 190px;
     top: 10px;
     display: block;
     font-size: 20px;
@@ -228,5 +237,4 @@ hall-manager {
     border: 1px solid lightgrey;
     border-radius: 5px;
     padding: 5px;
-
 }

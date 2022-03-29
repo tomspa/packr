@@ -1,4 +1,4 @@
-class FormWindow {
+class FormWindow extends HTMLElement {
     modal;
     isOn;
     createTruckBtn;
@@ -7,6 +7,7 @@ class FormWindow {
     modalContent;
 
     constructor() {
+        super();
         this.modal = document.getElementById("modal");
         this.isOn = false;
         this.createTruckBtn = document.getElementById("create-truck");
@@ -21,7 +22,7 @@ class FormWindow {
 
     listeners() {
         this.xbtn.onclick = () => {
-            this.toggleDisplay();
+            this.closeDisplay();
             this.modalContent.reset();
         }
 
@@ -29,30 +30,32 @@ class FormWindow {
             e.preventDefault();
             this.reset();
         });
+    }
+
+    closeDisplay() {
+        this.modal.style.display = "none";
+    }
+
+    openDisplay(hall) {
+        this.modal.style.display = "block";
 
         this.createTruckBtn.onclick = () => {
-            //this.currentHall = document.getElementById("hallId");
-
-            let width = document.getElementById("width").value;
-            let height = document.getElementById("height").value;
-            let interval = document.getElementById("interval").value;
-
-            let radio = document.querySelector("input[name='trans']:checked").value;
-
-            let select = document.getElementById("provinces");
-            let selected = [...select.options]
-                .filter(option => option.selected)
-                .map(option => option.value);
+            this.checkForm(hall);
         }
     }
 
-    toggleDisplay() {
-        if (this.isOn) {
-            this.modal.style.display = "none";
-        } else {
-            this.modal.style.display = "block"
-        }
-        this.isOn = !this.isOn;
+    checkForm(hall) {
+        let width = document.getElementById("width").value;
+        let height = document.getElementById("height").value;
+        let interval = document.getElementById("interval").value;
+        let radio = document.querySelector("input[name='trans']:checked").value;
+        let select = document.getElementById("provinces");
+        let selected = [...select.options]
+            .filter(option => option.selected)
+            .map(option => option.value);
+
+        hall.addTruck(width, height, interval, radio, selected);
+        this.closeDisplay();
     }
 }
 
