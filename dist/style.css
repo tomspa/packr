@@ -72,6 +72,7 @@ td {
     color: red;
 }
 
+
 /* --------------------- Truck ------------------------*/
 
 .truck {
@@ -92,7 +93,7 @@ truck-cell {
 x-truck {
     display: inline-block;
     margin-right: 10px;
-    animation: dive-away 4s ease-in forwards;
+    /*animation: dive-away 4s ease-in forwards; */
 }
 
 x-truck .truck-image {
@@ -102,6 +103,7 @@ x-truck .truck-image {
     background-size: contain;
     background-repeat: no-repeat;
 }
+
 
 /* --------------------- Conveyor Belt ------------------------*/
 
@@ -154,13 +156,16 @@ conveyor-belt .belt .roller-end {
     right: 2px;
 }
 
+
 /* --------------------- General ------------------------*/
 
-.green-button:hover, .blue-button {
+.green-button:hover,
+.blue-button {
     background: #3ea63e;
 }
 
-.green-button:disabled, .blue-botton:disabled {
+.green-button:disabled,
+.blue-botton:disabled {
     opacity: 0.5;
     cursor: no-drop;
 }
@@ -211,6 +216,7 @@ conveyor-belt .belt .roller-end {
         margin-bottom: 300px;
     }
 }
+
 
 /* --------------------- Hall ------------------------*/
 
@@ -278,5 +284,5 @@ hall-manager .create-truck {
 
 .hall-content x-truck {
     vertical-align: bottom;
-    flex-shrink : 0
+    flex-shrink: 0
 }
