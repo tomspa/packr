@@ -13,7 +13,7 @@ td {
 
 .modal {
     display: none;
-    position: fixed;
+    position: absolute;
     padding-top: 50px;
     left: 0;
     top: 0;
@@ -33,7 +33,8 @@ td {
     background-color: white;
     padding: 20px;
     margin: auto;
-    width: 75%;
+    width: 700px;
+    border-radius: 10px;
 }
 
 .modal-header {
@@ -67,9 +68,14 @@ td {
     cursor: move;
 }
 
+.modal #errorText {
+    color: red;
+}
+
+/* --------------------- Truck ------------------------*/
+
 .truck {
     background-color: black;
-    padding: 30px;
     background-clip: content-box;
 }
 
@@ -81,6 +87,20 @@ td {
 truck-cell {
     display: block;
     height: 100%;
+}
+
+x-truck {
+    display: inline-block;
+    margin-right: 10px;
+    animation: dive-away 4s ease-in forwards;
+}
+
+x-truck .truck-image {
+    height: 50px;
+    background-image: url("../img/truckfront.png");
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 /* --------------------- Conveyor Belt ------------------------*/
@@ -120,19 +140,10 @@ conveyor-belt .green-button {
     left: 10px;
 }
 
-.green-button:hover {
-    background: #3ea63e;
-}
-
-.green-button:disabled {
-    opacity: 0.5;
-    cursor: no-drop;
-}
-
 conveyor-belt tet-romino {
     bottom: 36px;
     position: absolute;
-    animation: move 5s linear;
+    animation: move 10s linear;
 }
 
 conveyor-belt .belt .roller-start {
@@ -143,12 +154,33 @@ conveyor-belt .belt .roller-end {
     right: 2px;
 }
 
+/* --------------------- General ------------------------*/
+
+.green-button:hover, .blue-button {
+    background: #3ea63e;
+}
+
+.green-button:disabled, .blue-botton:disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+}
+
 .green-button {
     padding: 7px 12px;
     color: white;
     font-size: 17px;
     background: #5fc95f;
     border: 2px solid green;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.blue-button {
+    padding: 7px 12px;
+    color: white;
+    font-size: 17px;
+    background: #2799d5;
+    border: 2px solid #152dd3;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -171,27 +203,44 @@ conveyor-belt .belt .roller-end {
     }
 }
 
+@keyframes dive-away {
+    from {
+        margin-bottom: 0px;
+    }
+    to {
+        margin-bottom: 300px;
+    }
+}
 
 /* --------------------- Hall ------------------------*/
 
 hall-div {
     display: none;
-    flex-direction: row;
     width: inherit;
     height: inherit;
 }
 
 hall-manager {
     display: block;
-    height: 300px;
+    height: 250px;
     border: 1px dashed gray;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+hall-manager .create-truck {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
 }
 
 .hall-manager-buttons {
     display: inline-block;
-    width: 200px;
-    padding: 20px;
+    width: 180px;
+    padding: 5px;
     vertical-align: top;
+    float: left;
 }
 
 .hall-manager-buttons button {
@@ -199,7 +248,35 @@ hall-manager {
 }
 
 .hall-holder {
-    display: inline-block;
     height: 100%;
     vertical-align: top;
+    float: none;
+    overflow: hidden;
+    margin-right: 190px;
+}
+
+.hall-holder .hall-info {
+    position: absolute;
+    left: 190px;
+    top: 10px;
+    display: block;
+    font-size: 20px;
+    width: 60px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.hall-content {
+    display: flex;
+    align-items: end;
+    margin-left: 100px;
+    max-width: 100%;
+    overflow-x: auto;
+    flex-direction: row;
+}
+
+.hall-content x-truck {
+    vertical-align: bottom;
+    flex-shrink : 0
 }

@@ -6,6 +6,7 @@ class HallManager extends HTMLElement {
     createHallBtn;
     currentHallIndex;
     hallHolder;
+    modal;
 
     constructor() {
         super();
@@ -24,20 +25,28 @@ class HallManager extends HTMLElement {
         if (this.halls.length < 8) {
             let changeIndex = this.halls.length;
 
-            let btn = document.createElement("button");
-            btn.classList.add("green-button");
-            btn.innerHTML = "hal " + (this.halls.length + 1);
+            let hallChangeBtn = document.createElement("button");
+            hallChangeBtn.classList.add("blue-button");
+            hallChangeBtn.innerHTML = "Hal " + (this.halls.length + 1);
 
-            btn.onclick = () => {
+            hallChangeBtn.onclick = () => {
                 this.changeHall(changeIndex)
             };
 
-            this.buttonDiv.appendChild(btn);
-            let hall = new Hall();
-            hall.style.display = "none";
-            this.halls.push(hall);
+            this.buttonDiv.appendChild(hallChangeBtn);
+            let hall = new Hall(this);
+
+            if (this.halls.length == 0) {
+                hall.style.display = "flex";
+            }
+            else {
+                hall.style.display = "none";
+            }
+
+            this.halls.push(hall.create());
             this.hallHolder.appendChild(hall);
-        } else {
+        }
+        else {
             this.createHallBtn.disabled = true;
         }
     }

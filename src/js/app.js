@@ -13,25 +13,21 @@ function start() {
     customElements.define("tet-romino", Tetromino);
     customElements.define("truck-cell", TruckCell);
     customElements.define("conveyor-belt", ConveyorBelt);
+    customElements.define("form-window", FormWindow);
+    customElements.define("x-truck", Truck);
 
     let modal = new FormWindow();
-    let btn = document.getElementById("open-modal");
-    btn.onclick = function() {
-        modal.toggleDisplay();
-    }
-    let hall = new Hall();
+    //
+    // let holder = document.getElementById("holder");
+    // let truck = new Truck(5, 10, 1, CargoType.Pallets);
+    // let truck2 = new Truck(5, 10, 1, CargoType.Cold);
+    // let truck3 = new Truck(5, 10, 1, CargoType.General);
+    // let truck4 = new Truck(5, 10, 1, CargoType.Quick);
 
-    let holder = document.getElementById("holder");
-    let truck = new Truck(5, 10, 1, CargoType.Pallets);
-    let truck2 = new Truck(5, 10, 1, CargoType.Cold);
-    let truck3 = new Truck(5, 10, 1, CargoType.General);
-    let truck4 = new Truck(5, 10, 1, CargoType.Quick);
-
-    hall.appendChild(truck.create());
-    hall.appendChild(truck2.create());
-    hall.appendChild(truck3.create());
-    hall.appendChild(truck4.create());
-    holder.appendChild(hall);
+    // holder.appendChild(truck.create());
+    // holder.appendChild(truck2.create());
+    // holder.appendChild(truck3.create());
+    // holder.appendChild(truck4.create());
 }
 
 start();

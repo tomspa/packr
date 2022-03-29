@@ -1,7 +1,7 @@
 import TruckCell from "./TruckCell.js";
 import CargoType from '../enums/CargoType.js';
 
-class Truck {
+class Truck extends HTMLElement {
     width;
     height;
     interval;
@@ -10,22 +10,28 @@ class Truck {
     color;
 
     constructor(width, height, interval, cargoType) {
+        super();
         this.width = width;
         this.height = height;
         this.interval = interval;
-        this.cargoType = cargoType;
+        this.cargoType = CargoType.GetCargoTypeByNumber(cargoType);
+        this.color = CargoType.GetColorByCargoType(cargoType);
+
+        console.log(cargoType);
         this.init();
     }
 
     init() {
-        this.color = CargoType.GetColorByCargoType(this.cargoType);
         this.cells = new Array();
+
         for (let y = 0; y < this.height; y++) {
             this.cells[y] = new Array(this.width);
         }
     }
 
     create() {
+        let image = document.createElement("div");
+        image.classList.add("truck-image")
         let truck = document.createElement("table");
         truck.classList.add("truck");
 
@@ -40,7 +46,11 @@ class Truck {
                 td.setAttribute("style", "border: 2px solid " + this.color);
             }
         }
-        return truck;
+
+        this.appendChild(image);
+        this.appendChild(truck);
+
+        return this;
     }
 
     placeTetromino(x, y, tetromino) {
