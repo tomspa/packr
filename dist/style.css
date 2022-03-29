@@ -92,7 +92,7 @@ truck-cell {
 x-truck {
     display: inline-block;
     margin-right: 10px;
-    animation: dive-away 4s ease-in;
+    animation: dive-away 4s ease-in forwards;
 }
 
 x-truck .truck-image {
