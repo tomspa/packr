@@ -21,7 +21,7 @@ class TruckCell extends HTMLElement {
 
     listeners() {
         this.addEventListener("click", function() {
-            this.truck.placeTetromino(this.x, this.y, new Tetromino(TetrominoShape.I, CargoType.General));
+            this.truck.placeTetromino(this.x, this.y, 1);
         });
 
         this.addEventListener("dragover", function(e) {
@@ -33,20 +33,16 @@ class TruckCell extends HTMLElement {
 
         this.addEventListener("drop", (e) => {
             e.preventDefault();
-            //let tet = e.dataTransfer.getData("text/uri-list");
 
-            let tetromino = document.getElementsByClassName("dragging");
-            let tetShape = TetrominoShape.GetTetroShapeByNumber(tetromino[0].shape);
-            let tetType = tetromino[0].cargoType;
-            console.log(tetType);
-            console.log(this.truck.cargoType);
+            let tetrominoKey = e.dataTransfer.getData("tetrominoKey");
+            this.truck.placeTetromino(this.x, this.y, tetrominoKey);
 
-            if (this.truck.cargoType == tetType) {
-                console.log("first if")
-                if (this.truck.canPlace(this.x, this.y, tetShape)) {
-                    console.log("second if")
-                }
-            }
+            // if (this.truck.cargoType == tetType) {
+            //     console.log("first if")
+            //     if (this.truck.canPlace(this.x, this.y, tetShape)) {
+            //         console.log("second if")
+            //     }
+            // }
         });
     }
 }

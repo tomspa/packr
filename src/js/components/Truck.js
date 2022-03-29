@@ -1,6 +1,8 @@
 import TruckCell from "./TruckCell.js";
 import CargoType from '../enums/CargoType.js';
 import TetrominoShape from "../enums/TetrominoShape.js";
+import TetrominoManager from "./TetrominoManager.js";
+import Tetromino from "./Tetromino.js";
 
 class Truck extends HTMLElement {
     width;
@@ -53,41 +55,22 @@ class Truck extends HTMLElement {
         return this;
     }
 
-    placeTetromino(x, y, tetromino) {
-        console.log(tetromino);
-    }
+    placeTetromino(placeX, placeY, tetrominoKey) {
+        console.log(TetrominoManager.tetrominoArray.get(tetrominoKey).positions);
+        console.log(this.cells);
 
-    canPlace(x, y, tetrominoShape) {
-        switch (tetrominoShape) {
-            case TetrominoShape.Z:
-                canPlaceZ(x, y);
-            case TetrominoShape.T:
-                canPlaceT(x, y);
-            case TetrominoShape.I:
-                canPlaceI(x, y);
-            case TetrominoShape.L:
-                canPlaceL(x, y);
-            case TetrominoShape.O:
-                canPlaceO(x, y);
-        }
-    }
+        console.log(placeX, placeY);
 
-    canPlaceZ(x, y) {
-        if (x - 2 < 0 || y + 3 > this.width) {
+        if (placeX - 2 < 0 || placeY + 3 > this.width) {
             //if the Z shape exceeds the trucks bounds
             return false;
         }
 
-        var firstCell = cells[x][y - 1];
-        var secondCell = cells[x + 1][y - 1];
-        var thirdCell = cells[x + 1][y];
-        var fourthCell = cells[x + 2][y];
-
         //if the Z shape fits on the given X and Y
-        if (firstCell.isFilled || secondCell.isFilled || thirdCell.isFilled || fourthCell.isFilled) {
-            return false;
-        }
-        console.log("true");
+        // if (firstCell.isFilled || secondCell.isFilled || thirdCell.isFilled || fourthCell.isFilled) {
+        //     return false;
+        // }
+        // console.log("true");
         return true;
     }
 }
