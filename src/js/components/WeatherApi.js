@@ -23,6 +23,9 @@ class WeatherApi extends HTMLElement {
         this.apiInfoDiv = document.createElement("div");
         this.apiInfoDiv.classList.add("weather-api-wrapper");
 
+        this.imgWrapper = document.createElement("div");
+        this.imgWrapper.classList.add("weather-api-img-wrapper");
+
         this.input = document.createElement("input");
         this.input.setAttribute("type", "text");
         this.input.setAttribute("name", "weather-input");
@@ -45,13 +48,15 @@ class WeatherApi extends HTMLElement {
 
         this.apiInfoDiv.appendChild(this.temperature);
         this.apiInfoDiv.appendChild(this.city);
-        this.apiInfoDiv.appendChild(this.img);
+
+        this.imgWrapper.appendChild(this.img);
+        this.imgWrapper.appendChild(this.apiInfoDiv);
 
         this.wrapper = document.createElement("div");
         this.wrapper.classList.add("wrap");
 
         this.wrapper.appendChild(this.wrapperDiv);
-        this.wrapper.appendChild(this.apiInfoDiv);
+        this.wrapper.appendChild(this.imgWrapper);
 
         this.appendChild(this.wrapper);
     }
@@ -71,6 +76,7 @@ class WeatherApi extends HTMLElement {
                     .then((json) => {
                         this.city.innerHTML = json.location.name;
                         this.temperature.innerHTML = json.current.temp_c + "°";
+                        this.img.src = json.current.condition.icon;
                         this.label.style.color = "black";
                     }).catch((error) => {
                         this.label.style.color = "red";

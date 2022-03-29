@@ -218,11 +218,20 @@ hall-manager {
     width: 200px;
     height: fit-content;
     font-size: 30px;
-    margin: 5px;
 }
 
 .weather-api-wrapper label {
     font-size: 20px;
+}
+
+.weather-api-img-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.weather-api-img-wrapper img {
+    max-height: 50px;
+    max-width: 50px;
 }
 
 .weather-api-wrapper h1 {
