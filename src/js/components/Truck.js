@@ -18,8 +18,6 @@ class Truck extends HTMLElement {
         this.interval = interval;
         this.cargoType = CargoType.GetCargoTypeByNumber(cargoType);
         this.color = CargoType.GetColorByCargoType(cargoType);
-
-        console.log(cargoType);
         this.init();
     }
 
@@ -84,18 +82,14 @@ class Truck extends HTMLElement {
     timerCount() {
         let countDownDate = new Date().getTime() + (this.interval * 1000);
         let x = setInterval(() => {
-
             let now = new Date().getTime();
-
             let distance = countDownDate - now;
-
-            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             if (distance <= 0) {
                 clearInterval(x);
+                this.timer.innerHTML = "returning";
                 return;
             }
             this.timer.innerHTML = minutes + "m " + seconds + "s ";
