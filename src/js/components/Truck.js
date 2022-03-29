@@ -74,9 +74,6 @@ class Truck extends HTMLElement {
                 }, 4000);
             }, (this.interval * 1000));
         }
-
-
-
     }
 
     timerCount() {

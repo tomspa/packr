@@ -37,10 +37,10 @@ class HallManager extends HTMLElement {
             let hall = new Hall(this);
 
             if (this.halls.length == 0) {
-                hall.style.display = "flex";
+                hall.style.visibility = "visible";
             }
             else {
-                hall.style.display = "none";
+                hall.style.visibility = "hidden";
             }
 
             this.halls.push(hall.create());
@@ -76,11 +76,11 @@ class HallManager extends HTMLElement {
 
     changeHall(hallIndex) {
         //old hall display none
-        this.halls[this.currentHallIndex].style.display = "none";
+        this.halls[this.currentHallIndex].style.visibility = "hidden";
         this.currentHallIndex = hallIndex;
 
         //new hall display flex
-        this.halls[this.currentHallIndex].style.display = "flex";
+        this.halls[this.currentHallIndex].style.visibility = "visible";
     }
 }
 
