@@ -1,4 +1,5 @@
 import Truck from "./Truck.js";
+import CargoType from "../enums/CargoType.js";
 
 class Hall extends HTMLElement {
     trucks;
@@ -19,15 +20,13 @@ class Hall extends HTMLElement {
         this.trucks = new Array(10);
         this.modal = document.getElementById("modal");
         this.createTruckButton = document.createElement("button");
+        this.hallContent = document.createElement("div");
     }
 
     addTruck(width, height, interval, type, radius) {
-        console.log(width, height, interval, type, radius);
-        if (this.trucks.length < 10) {
-            let truck = new Truck(width, height, interval, type);
-            this.trucks.push(truck);
-            this.hallContent.appendChild(truck.create());
-        }
+        let truck = new Truck(width, height, interval, type);
+        this.trucks.push(truck);
+        this.hallContent.appendChild(truck.create());
     }
 
     removeTruck(truck) {
@@ -48,7 +47,6 @@ class Hall extends HTMLElement {
         this.createTruckButton.classList.add("create-truck");
         this.createTruckButton.innerHTML = "Maak vrachtwagen";
 
-        this.hallContent = document.createElement("div");
         this.hallContent.classList.add("hall-content");
         let hallInfo = document.createElement("div");
         hallInfo.classList.add("hall-info");

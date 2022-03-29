@@ -68,9 +68,14 @@ td {
     cursor: move;
 }
 
+.modal #errorText {
+    color: red;
+}
+
+/* --------------------- Truck ------------------------*/
+
 .truck {
     background-color: black;
-    padding: 30px;
     background-clip: content-box;
 }
 
@@ -82,6 +87,20 @@ td {
 truck-cell {
     display: block;
     height: 100%;
+}
+
+x-truck {
+    display: inline-block;
+    margin-right: 10px;
+    animation: dive-away 4s ease-in;
+}
+
+x-truck .truck-image {
+    height: 50px;
+    background-image: url("../img/truckfront.png");
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 /* --------------------- Conveyor Belt ------------------------*/
@@ -184,6 +203,15 @@ conveyor-belt .belt .roller-end {
     }
 }
 
+@keyframes dive-away {
+    from {
+        margin-bottom: 0px;
+    }
+    to {
+        margin-bottom: 300px;
+    }
+}
+
 /* --------------------- Hall ------------------------*/
 
 hall-div {
@@ -237,4 +265,18 @@ hall-manager .create-truck {
     border: 1px solid lightgrey;
     border-radius: 5px;
     padding: 5px;
+}
+
+.hall-content {
+    display: flex;
+    align-items: end;
+    margin-left: 100px;
+    max-width: 100%;
+    overflow-x: auto;
+    flex-direction: row;
+}
+
+.hall-content x-truck {
+    vertical-align: bottom;
+    flex-shrink : 0
 }

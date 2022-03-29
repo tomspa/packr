@@ -12,17 +12,20 @@ class CargoType {
     static QuickColor = "#eaea23";
 
     static GetColorByCargoType(type) {
-        switch(type) {
-            case CargoType.Cold:
-                return this.ColdColor;
-            case CargoType.Fragile:
-                return this.FragileColor;
-            case CargoType.General:
-                return this.GeneralColor;
-            case CargoType.Pallets:
-                return this.PalletsColor;
-            case CargoType.Quick:
-                return this.QuickColor;
+        if (type == 0 || type == "0") {
+            return "#00FFFF";
+        }
+        else if (type == 1 || type == "1") {
+            return "#af01af";
+        }
+        else if (type == 2 || type == "2") {
+            return "#24e00c";
+        }
+        else if (type == 3 || type == "3") {
+            return "#985a05";
+        }
+        else if (type == 4 || type == "4") {
+            return "#eaea23";
         }
     }
 
