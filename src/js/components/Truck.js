@@ -56,22 +56,41 @@ class Truck extends HTMLElement {
     }
 
     placeTetromino(placeX, placeY, tetrominoKey) {
-        console.log(TetrominoManager.tetrominoArray.get(tetrominoKey).positions);
-        console.log(this.cells);
+        let tet = TetrominoManager.tetrominoArray.get(tetrominoKey);
 
-        console.log(placeX, placeY);
-
-        if (placeX - 2 < 0 || placeY + 3 > this.width) {
-            //if the Z shape exceeds the trucks bounds
-            return false;
+        if (tet.cargoType != this.cargoType) {
+            return;
         }
 
-        //if the Z shape fits on the given X and Y
-        // if (firstCell.isFilled || secondCell.isFilled || thirdCell.isFilled || fourthCell.isFilled) {
-        //     return false;
-        // }
-        // console.log("true");
-        return true;
+        let truckPosX = placeX;
+        let truckPosY = placeY;
+
+        let yIncrease = 0;
+
+        let fillPositions = new Array();
+
+        for (let y = 3; y >= 0; y--) {
+            for (let x = 0; x < 4; x++) {
+                if (fillPositions.length == 4) break;
+
+                if (tet.positions[y][x] == 1 && (truckPosY - yIncrease < 0 || truckPosX + x > this.width -1)) return;
+
+                let truckCell = this.cells[truckPosY - yIncrease][truckPosX + x];
+
+                if (tet.positions[y][x] == 1 && !truckCell.isFilled) {
+                    fillPositions.push(truckCell)
+                }
+                else if (tet.positions[y][x] == 1){
+                    return;
+                }
+            }
+            yIncrease++;
+        }
+
+        fillPositions.forEach((cell) => {
+            cell.isFilled = true;
+            cell.fill(this.color);
+        })
     }
 }
 

@@ -21,14 +21,10 @@ class TruckCell extends HTMLElement {
 
     listeners() {
         this.addEventListener("click", function() {
-            this.truck.placeTetromino(this.x, this.y, 1);
         });
 
         this.addEventListener("dragover", function(e) {
             e.preventDefault();
-
-            let tetromino = document.getElementsByClassName("dragging");
-            //console.log(tetromino[0].getShape());
         });
 
         this.addEventListener("drop", (e) => {
@@ -44,6 +40,10 @@ class TruckCell extends HTMLElement {
             //     }
             // }
         });
+    }
+
+    fill(color) {
+        this.style.backgroundColor = color;
     }
 }
 
