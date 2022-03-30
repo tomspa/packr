@@ -72,6 +72,7 @@ td {
     color: red;
 }
 
+
 /* --------------------- Truck ------------------------*/
 
 .truck {
@@ -120,6 +121,7 @@ x-truck .truck-image {
     bottom: 26px;
     z-index: -1;
 }
+
 
 /* --------------------- Conveyor Belt ------------------------*/
 
@@ -171,6 +173,24 @@ conveyor-belt .belt .roller-start {
 conveyor-belt .belt .roller-end {
     right: 2px;
 }
+
+.tet-container {
+    border: 4px dashed black;
+    padding: 0px 5px;
+    border-top: none;
+    min-width: 270px;
+    height: 70%;
+    margin-top: 80px;
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tet-container .tetromino table tr td {
+    width: 10px;
+    height: 10px;
+}
+
 
 /* --------------------- General ------------------------*/
 
