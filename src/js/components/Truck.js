@@ -102,8 +102,11 @@ class Truck extends HTMLElement {
             this.style.animation = "dive-away 4s ease-in forwards"
             this.button.style.display = "none";
             this.timerCount();
+
             setTimeout(() => {
-                this.style.animation = "dive-back 4s ease-out forwards"
+                this.reset();
+                this.style.animation = "dive-back 4s ease-out forwards";
+
                 setTimeout(() => {
                     this.button.style.display = "block";
                 }, 4000);
@@ -126,6 +129,15 @@ class Truck extends HTMLElement {
             }
             this.timer.innerHTML = minutes + "m " + seconds + "s ";
         }, 200);
+    }
+
+    reset() {
+        this.cells.forEach((cellArray) => {
+            cellArray.forEach((cell) => {
+                cell.isFilled = false;
+                cell.fill("#000000");
+            })
+        })
     }
 }
 
