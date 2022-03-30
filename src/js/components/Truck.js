@@ -1,8 +1,6 @@
 import TruckCell from "./TruckCell.js";
 import CargoType from '../enums/CargoType.js';
-import TetrominoShape from "../enums/TetrominoShape.js";
 import TetrominoManager from "./TetrominoManager.js";
-import Tetromino from "./Tetromino.js";
 
 class Truck extends HTMLElement {
     width;
@@ -58,15 +56,11 @@ class Truck extends HTMLElement {
     placeTetromino(placeX, placeY, tetrominoKey) {
         let tet = TetrominoManager.tetrominoArray.get(tetrominoKey);
 
-        if (tet.cargoType != this.cargoType) {
-            return;
-        }
+        if (tet.cargoType != this.cargoType) return;
 
         let truckPosX = placeX;
         let truckPosY = placeY;
-
         let yIncrease = 0;
-
         let fillPositions = new Array();
 
         for (let y = 3; y >= 0; y--) {
