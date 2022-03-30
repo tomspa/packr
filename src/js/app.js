@@ -2,7 +2,7 @@ import Tetromino from './components/Tetromino.js';
 import Hall from './components/Hall.js';
 import HallManager from './components/HallManager.js';
 import FormWindow from './components/Form.js';
-import CargoType from './enums/CargoType.js';
+import TetContainer from './components/TetContainer.js'
 import Truck from './components/Truck.js';
 import TruckCell from './components/TruckCell.js';
 import ConveyorBelt from "./components/ConveyorBelt.js";
@@ -12,6 +12,7 @@ function start() {
     customElements.define("hall-manager", HallManager);
     customElements.define("tet-romino", Tetromino);
     customElements.define("truck-cell", TruckCell);
+    customElements.define("tet-container", TetContainer);
     customElements.define("conveyor-belt", ConveyorBelt);
     customElements.define("form-window", FormWindow);
     customElements.define("x-truck", Truck);
