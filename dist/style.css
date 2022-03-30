@@ -8,7 +8,6 @@ td {
     height: 20px;
 }
 
-
 /* --------------------- modal styling ------------------------*/
 
 .modal {
@@ -191,7 +190,6 @@ conveyor-belt .belt .roller-end {
     height: 10px;
 }
 
-
 /* --------------------- General ------------------------*/
 
 .green-button:hover,
@@ -252,19 +250,18 @@ x-truck .blue-button {
         padding-bottom: 0px;
     }
     to {
-        padding-bottom: 300px;
+        padding-bottom: 310px;
     }
 }
 
 @keyframes dive-back {
     from {
-        padding-bottom: 300px;
+        padding-bottom: 310px;
     }
     to {
         padding-bottom: 0px;
     }
 }
-
 
 /* --------------------- Hall ------------------------*/
 
@@ -305,6 +302,12 @@ hall-manager .create-truck {
 
 .hall-manager-buttons button {
     margin: 5px;
+    padding: 14px 11px;
+}
+
+.hall-manager-buttons .add-hall-button {
+    margin: 5px;
+    padding: 7px 12px;
 }
 
 .hall-holder {

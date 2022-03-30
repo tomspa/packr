@@ -7,7 +7,7 @@ class TruckCell extends HTMLElement {
     y;
     isFilled;
     filledColor;
-    truck
+    truck;
 
     constructor(x, y, truck) {
         super();
@@ -20,25 +20,30 @@ class TruckCell extends HTMLElement {
     }
 
     listeners() {
-        this.addEventListener("click",  function() {
-            this.truck.placeTetromino(this.x, this.y, new Tetromino(TetrominoShape.I, CargoType.General));
+        this.addEventListener("click", function() {
         });
 
         this.addEventListener("dragover", function(e) {
             e.preventDefault();
-
-            let tetromino = document.getElementsByClassName("dragging");
-            console.log(tetromino[0])
         });
 
-        this.addEventListener("drop", function(e) {
+        this.addEventListener("drop", (e) => {
             e.preventDefault();
-            let tet = e.dataTransfer.getData("text/uri-list");
 
-            console.log(tet);
+            let tetrominoKey = e.dataTransfer.getData("tetrominoKey");
+            this.truck.placeTetromino(this.x, this.y, tetrominoKey);
 
-            let tetromino = document.getElementsByClassName("dragging");
+            // if (this.truck.cargoType == tetType) {
+            //     console.log("first if")
+            //     if (this.truck.canPlace(this.x, this.y, tetShape)) {
+            //         console.log("second if")
+            //     }
+            // }
         });
+    }
+
+    fill(color) {
+        this.style.backgroundColor = color;
     }
 }
 

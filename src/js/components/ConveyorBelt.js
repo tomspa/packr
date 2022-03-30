@@ -2,6 +2,8 @@ import Tetromino from "./Tetromino.js";
 import TetrominoShape from "../enums/TetrominoShape.js";
 import CargoType from "../enums/CargoType.js";
 import TetContainer from "./TetContainer.js";
+import TetrominoManager from "./TetrominoManager.js";
+
 
 class ConveyorBelt extends HTMLElement {
     addButton;
@@ -56,8 +58,7 @@ class ConveyorBelt extends HTMLElement {
             }
         }, 3000);
 
-        let tet = new Tetromino(TetrominoShape.GetRandomTetroShape(), CargoType.GetRandomCargoType());
-
+        let uniqueKey = TetrominoManager.GenerateKey();
 
         tet.addEventListener("animationend", () => {
             this.tetContainer.appendChild(tet);
@@ -66,6 +67,9 @@ class ConveyorBelt extends HTMLElement {
         });
 
         this.appendChild(tet.create());
+        let tet = new Tetromino(TetrominoShape.GetRandomTetroShape(), CargoType.GetRandomCargoType(), uniqueKey).create();
+        TetrominoManager.tetrominoArray.set(uniqueKey, tet);
+        this.appendChild(tet);
     }
 
     createContainer() {
