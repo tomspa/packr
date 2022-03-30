@@ -64,8 +64,8 @@ class FormWindow extends HTMLElement {
             this.errorText.innerHTML = "Hoogte moet minimaal 4 en maximaal 9 zijn";
             return;
         }
-        if (interval.value < 0 || interval.value > 20) {
-            this.errorText.innerHTML = "Interval moet minimaal 0 en maximaal 20 zijn";
+        if (interval.value < 10 || interval.value > 180) {
+            this.errorText.innerHTML = "Interval moet minimaal 10 en maximaal 180 zijn";
             return;
         }
 

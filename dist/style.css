@@ -8,7 +8,6 @@ td {
     height: 20px;
 }
 
-
 /* --------------------- modal styling ------------------------*/
 
 .modal {
@@ -93,7 +92,14 @@ truck-cell {
 x-truck {
     display: inline-block;
     margin-right: 10px;
-    /*animation: dive-away 4s ease-in forwards; */
+    position: relative;
+}
+
+.drive-button {
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin: 0 auto 3px auto;
 }
 
 x-truck .truck-image {
@@ -104,6 +110,16 @@ x-truck .truck-image {
     background-repeat: no-repeat;
 }
 
+.timer {
+    margin-bottom: 50px;
+    font-size: 15px;
+    text-align: center;
+    left: 0;
+    right: 0;
+    position: absolute;
+    bottom: 26px;
+    z-index: -1;
+}
 
 /* --------------------- Conveyor Belt ------------------------*/
 
@@ -190,6 +206,10 @@ conveyor-belt .belt .roller-end {
     cursor: pointer;
 }
 
+x-truck .blue-button {
+    padding: 0;
+}
+
 @keyframes rotate {
     from {
         transform: rotate(0deg);
@@ -210,25 +230,37 @@ conveyor-belt .belt .roller-end {
 
 @keyframes dive-away {
     from {
-        margin-bottom: 0px;
+        padding-bottom: 0px;
     }
     to {
-        margin-bottom: 300px;
+        padding-bottom: 310px;
     }
 }
 
+@keyframes dive-back {
+    from {
+        padding-bottom: 310px;
+    }
+    to {
+        padding-bottom: 0px;
+    }
+}
 
 /* --------------------- Hall ------------------------*/
 
 hall-div {
-    display: none;
+    display: flex;
+    visibility: hidden;
     width: inherit;
     height: inherit;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 hall-manager {
     display: block;
-    height: 250px;
+    height: 310px;
     border: 1px dashed gray;
     margin-bottom: 20px;
     position: relative;
@@ -238,19 +270,27 @@ hall-manager .create-truck {
     position: absolute;
     right: 10px;
     top: 10px;
-    z-index: 1;
 }
 
 .hall-manager-buttons {
+    position: absolute;
+    left: 0px;
     display: inline-block;
     width: 180px;
     padding: 5px;
     vertical-align: top;
     float: left;
+    z-index: 1;
 }
 
 .hall-manager-buttons button {
     margin: 5px;
+    padding: 14px 11px;
+}
+
+.hall-manager-buttons .add-hall-button {
+    margin: 5px;
+    padding: 7px 12px;
 }
 
 .hall-holder {
@@ -271,13 +311,14 @@ hall-manager .create-truck {
     border: 1px solid lightgrey;
     border-radius: 5px;
     padding: 5px;
+    z-index: 2;
 }
 
 .hall-content {
     display: flex;
     align-items: end;
-    margin-left: 100px;
-    max-width: 100%;
+    margin-left: 300px;
+    max-width: 73%;
     overflow-x: auto;
     flex-direction: row;
 }
