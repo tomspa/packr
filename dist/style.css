@@ -71,6 +71,7 @@ td {
     color: red;
 }
 
+
 /* --------------------- Truck ------------------------*/
 
 .truck {
@@ -171,6 +172,7 @@ conveyor-belt .belt .roller-end {
     right: 2px;
 }
 
+
 /* --------------------- General ------------------------*/
 
 .green-button:hover,
@@ -243,7 +245,6 @@ x-truck .blue-button {
         padding-bottom: 0px;
     }
 }
-
 
 /* --------------------- Hall ------------------------*/
 

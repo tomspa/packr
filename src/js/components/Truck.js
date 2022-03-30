@@ -1,5 +1,6 @@
 import TruckCell from "./TruckCell.js";
 import CargoType from '../enums/CargoType.js';
+import TetrominoManager from "./TetrominoManager.js";
 
 class Truck extends HTMLElement {
     width;
@@ -16,7 +17,7 @@ class Truck extends HTMLElement {
         this.width = width;
         this.height = height;
         this.interval = interval;
-        this.cargoType = CargoType.GetCargoTypeByNumber(cargoType);
+        this.cargoType = cargoType;
         this.color = CargoType.GetColorByCargoType(cargoType);
         this.init();
     }
@@ -62,13 +63,50 @@ class Truck extends HTMLElement {
         return this;
     }
 
+    placeTetromino(placeX, placeY, tetrominoKey) {
+        let tet = TetrominoManager.tetrominoArray.get(tetrominoKey);
+
+        if (tet.cargoType != this.cargoType) return;
+
+        let truckPosX = placeX;
+        let truckPosY = placeY;
+        let yIncrease = 0;
+        let fillPositions = new Array();
+
+        for (let y = 3; y >= 0; y--) {
+            for (let x = 0; x < 4; x++) {
+                if (fillPositions.length == 4) break;
+
+                if (tet.positions[y][x] == 1 && (truckPosY - yIncrease < 0 || truckPosX + x > this.width -1)) return;
+
+                let truckCell = this.cells[truckPosY - yIncrease][truckPosX + x];
+
+                if (tet.positions[y][x] == 1 && !truckCell.isFilled) {
+                    fillPositions.push(truckCell)
+                }
+                else if (tet.positions[y][x] == 1){
+                    return;
+                }
+            }
+            yIncrease++;
+        }
+
+        fillPositions.forEach((cell) => {
+            cell.isFilled = true;
+            cell.fill(this.color);
+        })
+    }
+
     listeners() {
         this.button.onclick = () => {
             this.style.animation = "dive-away 4s ease-in forwards"
             this.button.style.display = "none";
             this.timerCount();
+
             setTimeout(() => {
-                this.style.animation = "dive-back 4s ease-out forwards"
+                this.reset();
+                this.style.animation = "dive-back 4s ease-out forwards";
+
                 setTimeout(() => {
                     this.button.style.display = "block";
                 }, 4000);
@@ -93,8 +131,13 @@ class Truck extends HTMLElement {
         }, 200);
     }
 
-    placeTetromino(x, y, tetromino) {
-        console.log(tetromino);
+    reset() {
+        this.cells.forEach((cellArray) => {
+            cellArray.forEach((cell) => {
+                cell.isFilled = false;
+                cell.fill("#000000");
+            })
+        })
     }
 }
 
