@@ -90,7 +90,7 @@ class Truck extends HTMLElement {
 
     placeTetromino(placeX, placeY, tetrominoKey) {
         if (this.radius.length <= 0) return;
-        
+
         let tet = TetrominoManager.tetrominoArray.get(tetrominoKey);
 
         if (tet.cargoType != this.cargoType) return;
@@ -202,8 +202,6 @@ class Truck extends HTMLElement {
     }
 
     driveAway(hasRadius) {
-        console.log(hasRadius);
-
         if (this.radius.length <= 0) {
             this.radiusTooltip.remove();
         }
