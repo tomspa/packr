@@ -1,5 +1,4 @@
 import Truck from "./Truck.js";
-import CargoType from "../enums/CargoType.js";
 
 class Hall extends HTMLElement {
     trucks;
