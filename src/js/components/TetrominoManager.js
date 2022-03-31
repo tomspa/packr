@@ -1,15 +1,18 @@
 class TetrominoManager {
     static tetrominoArray = new Map();
 
-    constructor() {
-    }
+    constructor() {}
 
     static GenerateKey() {
         return (new Date()).getTime() + "";
     }
 
     static GetTetrominoByKey(key) {
-        this.tetrominoArray.get(key);
+        return this.tetrominoArray.get(key);
+    }
+
+    static DeleteTetrominoByKey(key) {
+        this.tetrominoArray.delete(key);
     }
 }
 

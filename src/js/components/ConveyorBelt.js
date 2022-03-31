@@ -60,7 +60,7 @@ class ConveyorBelt extends HTMLElement {
 
         let uniqueKey = TetrominoManager.GenerateKey();
 
-        let tet = new Tetromino(TetrominoShape.GetRandomTetroShape(), CargoType.GetRandomCargoType(), uniqueKey).create();
+        let tet = new Tetromino(TetrominoShape.GetRandomTetroShape(), CargoType.GetRandomCargoType(), uniqueKey, this).create();
         TetrominoManager.tetrominoArray.set(uniqueKey, tet);
 
         tet.addEventListener("animationend", () => {

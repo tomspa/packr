@@ -6,6 +6,7 @@ import TetContainer from './components/TetContainer.js'
 import Truck from './components/Truck.js';
 import TruckCell from './components/TruckCell.js';
 import ConveyorBelt from "./components/ConveyorBelt.js";
+import WeatherApi from './components/WeatherApi.js';
 
 function start() {
     customElements.define("hall-div", Hall);
@@ -14,21 +15,17 @@ function start() {
     customElements.define("truck-cell", TruckCell);
     customElements.define("tet-container", TetContainer);
     customElements.define("conveyor-belt", ConveyorBelt);
+    customElements.define("weather-api", WeatherApi);
     customElements.define("form-window", FormWindow);
     customElements.define("x-truck", Truck);
 
-    let modal = new FormWindow();
-    //
-    // let holder = document.getElementById("holder");
-    // let truck = new Truck(5, 10, 1, CargoType.Pallets);
-    // let truck2 = new Truck(5, 10, 1, CargoType.Cold);
-    // let truck3 = new Truck(5, 10, 1, CargoType.General);
-    // let truck4 = new Truck(5, 10, 1, CargoType.Quick);
+    new FormWindow();
 
-    // holder.appendChild(truck.create());
-    // holder.appendChild(truck2.create());
-    // holder.appendChild(truck3.create());
-    // holder.appendChild(truck4.create());
+    // add new conveyor button
+    let holder = document.getElementById("holder");
+    document.getElementById("newConveyor").addEventListener("click", () => {
+        holder.appendChild(new ConveyorBelt());
+    })
 }
 
 start();

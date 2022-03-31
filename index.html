@@ -9,8 +9,10 @@
 </head>
 
 <body>
-    <hall-manager></hall-manager>
     <div id="holder">
+        <hall-manager></hall-manager>
+        <weather-api></weather-api>
+        <button id="newConveyor" class="blue-button">Nieuwe lopende band</button>
         <conveyor-belt></conveyor-belt>
         <conveyor-belt></conveyor-belt>
     </div>
@@ -55,20 +57,17 @@
             </div>
 
             <div class="dropdown">
-                <label for="provinces">Kies één of meerdere provincies</label>
+                <label for="provinces">Kies één of meerdere bestemmingen</label>
                 <select multiple name="provinces" id="provinces">
                     <option value="groningen">Groningen</option>
                     <option value="friesland">Friesland</option>
-                    <option value="drenthe">Drenthe</option>
-                    <option value="overijssel">Overijssel</option>
-                    <option value="flevoland">Flevoland</option>
-                    <option value="gelderland">Gelderland</option>
+                    <option value="cairo">Cairo</option>
+                    <option value="amsterdam">Amsterdam</option>
+                    <option value="alert">Alert</option>
+                    <option value="arnhem">Arnhem</option>
                     <option value="utrecht">Utrecht</option>
-                    <option value="noord-holland">Noord-holland</option>
-                    <option value="zuid-holland">Zuid-holland</option>
-                    <option value="zeeland">Zeeland</option>
-                    <option value="noord-brabant">Noord-brabant</option>
-                    <option value="limburg">Limburg</option>
+                    <option value="parijs">Parijs</option>
+                    <option value="London">London</option>
                 </select>
             </div>
             <div>

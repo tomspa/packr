@@ -6,7 +6,7 @@ class HallManager extends HTMLElement {
     createHallBtn;
     currentHallIndex;
     hallHolder;
-    modal;
+
 
     constructor() {
         super();
@@ -38,15 +38,13 @@ class HallManager extends HTMLElement {
 
             if (this.halls.length == 0) {
                 hall.style.visibility = "visible";
-            }
-            else {
+            } else {
                 hall.style.visibility = "hidden";
             }
 
             this.halls.push(hall.create());
             this.hallHolder.appendChild(hall);
-        }
-        else {
+        } else {
             this.createHallBtn.disabled = true;
         }
     }

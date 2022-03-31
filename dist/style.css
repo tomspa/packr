@@ -8,6 +8,7 @@ td {
     height: 20px;
 }
 
+
 /* --------------------- modal styling ------------------------*/
 
 .modal {
@@ -95,6 +96,11 @@ x-truck {
     position: relative;
 }
 
+x-truck .blue-button,
+x-truck .red-button {
+    padding: 0;
+}
+
 .drive-button {
     display: block;
     width: 25px;
@@ -121,15 +127,60 @@ x-truck .truck-image {
     z-index: -1;
 }
 
+x-truck .tooltip {
+    background: #d1f8d1;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px dashed darkgreen;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    right: -80px;
+}
+
+x-truck .tooltip p {
+    margin: 0;
+}
+
+x-truck:hover .tooltip {
+    visibility: visible;
+}
+
+x-truck .errorMessage {
+    position: absolute;
+    color: red;
+    font-size: 15px;
+    padding: 5px;
+    right: -20px;
+    border-radius: 5px;
+    top: 30px;
+    background: rgba(255, 255, 255, 0.67);
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        padding-bottom: 0px;
+    }
+    70% {
+        opacity: 0;
+    }
+    100% {
+        padding-bottom: 310px;
+        opacity: 0;
+    }
+}
+
 
 /* --------------------- Conveyor Belt ------------------------*/
 
 conveyor-belt {
-    width: 1000px;
+    width: 100%;
     height: 175px;
     display: flex;
     padding-left: 50px;
     position: relative;
+    padding-right: 35%;
 }
 
 conveyor-belt .belt {
@@ -190,6 +241,7 @@ conveyor-belt .belt .roller-end {
     height: 10px;
 }
 
+
 /* --------------------- General ------------------------*/
 
 .green-button:hover,
@@ -213,6 +265,16 @@ conveyor-belt .belt .roller-end {
     cursor: pointer;
 }
 
+.red-button {
+    padding: 7px 12px;
+    color: white;
+    font-size: 17px;
+    background: #d54d4d;
+    border: 2px solid #9d0214;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .blue-button {
     padding: 7px 12px;
     color: white;
@@ -221,10 +283,6 @@ conveyor-belt .belt .roller-end {
     border: 2px solid #152dd3;
     border-radius: 5px;
     cursor: pointer;
-}
-
-x-truck .blue-button {
-    padding: 0;
 }
 
 @keyframes rotate {
@@ -238,10 +296,10 @@ x-truck .blue-button {
 
 @keyframes move {
     from {
-        left: 80px;
+        left: 3%;
     }
     to {
-        left: 900px;
+        left: 58%;
     }
 }
 
@@ -262,6 +320,7 @@ x-truck .blue-button {
         padding-bottom: 0px;
     }
 }
+
 
 /* --------------------- Hall ------------------------*/
 
@@ -296,13 +355,12 @@ hall-manager .create-truck {
     width: 180px;
     padding: 5px;
     vertical-align: top;
-    float: left;
     z-index: 1;
 }
 
 .hall-manager-buttons button {
     margin: 5px;
-    padding: 14px 11px;
+    padding: 13px 11px;
 }
 
 .hall-manager-buttons .add-hall-button {
@@ -313,9 +371,6 @@ hall-manager .create-truck {
 .hall-holder {
     height: 100%;
     vertical-align: top;
-    float: none;
-    overflow: hidden;
-    margin-right: 190px;
 }
 
 .hall-holder .hall-info {
@@ -335,7 +390,7 @@ hall-manager .create-truck {
     display: flex;
     align-items: end;
     margin-left: 300px;
-    max-width: 73%;
+    width: 69%;
     overflow-x: auto;
     flex-direction: row;
 }
@@ -343,4 +398,61 @@ hall-manager .create-truck {
 .hall-content x-truck {
     vertical-align: bottom;
     flex-shrink: 0
+}
+
+
+/* --------------------- Weather ------------------------*/
+
+weather-api {
+    display: inline-block;
+    position: absolute;
+    right: 8px;
+    border: 1px dashed gray;
+    padding: 0 25px 25px 25px;
+    z-index: 1;
+}
+
+.weather-api-wrapper {
+    display: inline-block;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.weather-api-wrapper input {
+    display: block;
+    width: 200px;
+    height: fit-content;
+    font-size: 30px;
+}
+
+.weather-api-wrapper label {
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    color: gray;
+}
+
+.weather-api-img-wrapper {
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+}
+
+.weather-api-img-wrapper img {
+    display: inline-block;
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.weather-api-wrapper h1 {
+    margin: 0;
+}
+
+.weather-api-wrapper div {
+    margin: 0;
+}
+
+weather-api .wrap {
+    float: none;
+    overflow: hidden;
 }

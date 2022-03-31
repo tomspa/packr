@@ -1,5 +1,4 @@
 import Truck from "./Truck.js";
-import CargoType from "../enums/CargoType.js";
 
 class Hall extends HTMLElement {
     trucks;
@@ -24,7 +23,7 @@ class Hall extends HTMLElement {
     }
 
     addTruck(width, height, interval, type, radius) {
-        let truck = new Truck(width, height, interval, type);
+        let truck = new Truck(width, height, interval, type, radius);
         this.trucks.push(truck);
         this.hallContent.appendChild(truck.create());
     }
