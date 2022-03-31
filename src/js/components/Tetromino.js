@@ -27,11 +27,6 @@ class Tetromino extends HTMLElement {
     listeners() {
         this.addEventListener("dragstart", (e) => {
             e.dataTransfer.setData("tetrominoKey", this.key);
-            this.classList.add("dragging");
-        });
-
-        this.addEventListener("dragend", function() {
-            this.classList.remove("dragging");
         });
     }
 
