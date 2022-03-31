@@ -11,18 +11,23 @@ class Truck extends HTMLElement {
     color;
     button;
     timer;
+    radius;
+    radiusTooltip;
+    weatherApi;
 
-    constructor(width, height, interval, cargoType) {
+    constructor(width, height, interval, cargoType, radius) {
         super();
         this.width = width;
         this.height = height;
         this.interval = interval;
         this.cargoType = cargoType;
         this.color = CargoType.GetColorByCargoType(cargoType);
+        this.radius = radius;
         this.init();
     }
 
     init() {
+        this.weatherApi = document.querySelector("weather-api");
         this.cells = new Array();
 
         for (let y = 0; y < this.height; y++) {
@@ -31,6 +36,22 @@ class Truck extends HTMLElement {
     }
 
     create() {
+        // radius to tooltip
+        if (this.radius.length > 0) {
+            this.radiusTooltip = document.createElement("div");
+            this.radiusTooltip.classList.add("tooltip");
+
+            for (let i = 0; i < this.radius.length; i++ ) {
+                let toolElement = document.createElement("p");
+                toolElement.innerHTML = this.radius[i];
+                toolElement.classList.add("radius");
+                toolElement.setAttribute("data-radius", this.radius[i]);
+                this.radiusTooltip.appendChild(toolElement);
+            }
+
+            this.appendChild(this.radiusTooltip);
+        }
+
         this.timer = document.createElement("h1");
         this.timer.classList.add("timer");
         this.button = document.createElement("button")
@@ -99,18 +120,12 @@ class Truck extends HTMLElement {
 
     listeners() {
         this.button.onclick = () => {
-            this.style.animation = "dive-away 4s ease-in forwards"
-            this.button.style.display = "none";
-            this.timerCount();
-
-            setTimeout(() => {
-                this.reset();
-                this.style.animation = "dive-back 4s ease-out forwards";
-
-                setTimeout(() => {
-                    this.button.style.display = "block";
-                }, 4000);
-            }, (this.interval * 1000));
+            if (this.removeFromTooltip()) {
+                this.driveAway();
+            }
+            else {
+                this.fadeAway();
+            }
         }
     }
 
@@ -138,6 +153,63 @@ class Truck extends HTMLElement {
                 cell.fill("#000000");
             })
         })
+    }
+
+    removeFromTooltip() {
+        if (this.weatherApi.lastCity == undefined) {
+            this.weatherApi.alertFill();
+            return;
+        }
+
+        let foundRadius = this.radius.find((radius) => {
+            return radius == this.weatherApi.lastCity.toLowerCase();
+        });
+
+        if (!foundRadius) return false;
+
+        this.radius = this.radius.filter((r) => { return r != foundRadius });
+        let tooltipRadii = this.radiusTooltip.getElementsByClassName("radius");
+
+        for (let i = 0; i < tooltipRadii.length; i++) {
+            if (tooltipRadii[i].getAttribute("data-radius") == foundRadius) {
+                tooltipRadii[i].style.display = "none";
+            }
+        }
+
+        return true;
+    }
+
+    changeButton() {
+        this.button.classList.remove("blue-button");
+        this.button.classList.add("red-button");
+        this.button.innerHTML = "&#10006;";
+    }
+
+    driveAway() {
+        this.style.animation = "dive-away 4s ease-in forwards"
+        this.button.style.display = "none";
+        this.timerCount();
+
+        setTimeout(() => {
+            this.reset();
+            this.style.animation = "dive-back 4s ease-out forwards";
+
+            if (this.radius.length <= 0) {
+                this.changeButton();
+            }
+
+            setTimeout(() => {
+                this.button.style.display = "block";
+            }, 4000);
+        }, (this.interval * 1000));
+    }
+
+    fadeAway() {
+        this.style.animation = "fadeOut 3s linear";
+
+        setTimeout(() => {
+            this.remove();
+        }, 3000)
     }
 }
 

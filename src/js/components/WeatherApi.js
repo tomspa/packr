@@ -8,6 +8,7 @@ class WeatherApi extends HTMLElement {
     city;
     img;
     wrapper;
+    lastCity;
 
     constructor() {
         super();
@@ -74,6 +75,7 @@ class WeatherApi extends HTMLElement {
                         }
                     })
                     .then((json) => {
+                        this.lastCity = json.location.name;
                         this.city.innerHTML = json.location.name;
                         this.temperature.innerHTML = json.current.temp_c + "°";
                         this.img.src = json.current.condition.icon;
@@ -83,6 +85,14 @@ class WeatherApi extends HTMLElement {
                     });
             }
         });
+    }
+
+    alertFill() {
+        this.label.style.color = "red";
+
+        setTimeout(() => {
+            this.label.style.color = "gray";
+        }, 2000);
     }
 }
 

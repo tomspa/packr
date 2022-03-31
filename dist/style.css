@@ -94,6 +94,10 @@ x-truck {
     position: relative;
 }
 
+x-truck .blue-button, x-truck .red-button {
+    padding: 0;
+}
+
 .drive-button {
     display: block;
     width: 25px;
@@ -120,6 +124,39 @@ x-truck .truck-image {
     z-index: -1;
 }
 
+x-truck .tooltip {
+    background: #d1f8d1;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px dashed darkgreen;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    right: -90px;
+}
+
+x-truck .tooltip p {
+    margin: 0;
+}
+
+x-truck:hover .tooltip {
+    visibility: visible;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        padding-bottom: 0px;
+    }
+    70% {
+        opacity: 0;
+    }
+    100% {
+        padding-bottom: 310px;
+        opacity: 0;
+    }
+}
+
 
 /* --------------------- Conveyor Belt ------------------------*/
 
@@ -129,7 +166,7 @@ conveyor-belt {
     display: flex;
     padding-left: 50px;
     position: relative;
-    padding-right: 600px;
+    padding-right: 35%;
 }
 
 conveyor-belt .belt {
@@ -213,6 +250,16 @@ conveyor-belt .belt .roller-end {
     cursor: pointer;
 }
 
+.red-button {
+    padding: 7px 12px;
+    color: white;
+    font-size: 17px;
+    background: #d54d4d;
+    border: 2px solid #9d0214;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .blue-button {
     padding: 7px 12px;
     color: white;
@@ -221,10 +268,6 @@ conveyor-belt .belt .roller-end {
     border: 2px solid #152dd3;
     border-radius: 5px;
     cursor: pointer;
-}
-
-x-truck .blue-button {
-    padding: 0;
 }
 
 @keyframes rotate {
@@ -238,10 +281,10 @@ x-truck .blue-button {
 
 @keyframes move {
     from {
-        left: 80px;
+        left: 3%;
     }
     to {
-        left: 900px;
+        left: 58%;
     }
 }
 
@@ -332,7 +375,7 @@ hall-manager .create-truck {
     display: flex;
     align-items: end;
     margin-left: 300px;
-    max-width: 73%;
+    width: 69%;
     overflow-x: auto;
     flex-direction: row;
 }
@@ -374,7 +417,7 @@ weather-api {
 }
 
 .weather-api-img-wrapper {
-    width: 130px;
+    width: 150px;
     margin: 0 auto;
     display: block;
 }

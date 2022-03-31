@@ -6,7 +6,7 @@ class HallManager extends HTMLElement {
     createHallBtn;
     currentHallIndex;
     hallHolder;
-    modal;
+
 
     constructor() {
         super();
