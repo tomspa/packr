@@ -355,13 +355,12 @@ hall-manager .create-truck {
     width: 180px;
     padding: 5px;
     vertical-align: top;
-    float: left;
     z-index: 1;
 }
 
 .hall-manager-buttons button {
     margin: 5px;
-    padding: 14px 11px;
+    padding: 13px 11px;
 }
 
 .hall-manager-buttons .add-hall-button {
