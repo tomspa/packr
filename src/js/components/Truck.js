@@ -89,11 +89,11 @@ class Truck extends HTMLElement {
     }
 
     placeTetromino(placeX, placeY, tetrominoKey) {
-        if (this.radius.length <= 0) return;
+        if (this.radius.length <= 0) return false;
 
         let tet = TetrominoManager.tetrominoArray.get(tetrominoKey);
 
-        if (tet.cargoType != this.cargoType) return;
+        if (tet.cargoType != this.cargoType) return false;
 
         let truckPosX = placeX;
         let truckPosY = placeY;
@@ -104,14 +104,14 @@ class Truck extends HTMLElement {
             for (let x = 0; x < 4; x++) {
                 if (fillPositions.length == 4) break;
 
-                if (tet.positions[y][x] == 1 && (truckPosY - yIncrease < 0 || truckPosX + x > this.width - 1)) return;
+                if (tet.positions[y][x] == 1 && (truckPosY - yIncrease < 0 || truckPosX + x > this.width - 1)) return false;
 
                 let truckCell = this.cells[truckPosY - yIncrease][truckPosX + x];
 
                 if (tet.positions[y][x] == 1 && !truckCell.isFilled) {
                     fillPositions.push(truckCell)
                 } else if (tet.positions[y][x] == 1) {
-                    return;
+                    return false;
                 }
             }
             yIncrease++;
@@ -121,6 +121,7 @@ class Truck extends HTMLElement {
             cell.isFilled = true;
             cell.fill(this.color);
         })
+        return true;
     }
 
     listeners() {

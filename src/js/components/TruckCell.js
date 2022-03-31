@@ -1,7 +1,4 @@
-import TetrominoShape from "../enums/TetrominoShape.js";
-import Tetromino from "./Tetromino.js";
 import TetrominoManager from "./TetrominoManager.js";
-import CargoType from "../enums/CargoType.js";
 
 class TruckCell extends HTMLElement {
     x;
@@ -29,13 +26,15 @@ class TruckCell extends HTMLElement {
             e.preventDefault();
 
             let tetrominoKey = e.dataTransfer.getData("tetrominoKey");
-            this.truck.placeTetromino(this.x, this.y, tetrominoKey);
+            let isPlaced = this.truck.placeTetromino(this.x, this.y, tetrominoKey);
 
-            let tet = TetrominoManager.GetTetrominoByKey(tetrominoKey);
-            tet.conveyor.tetContainer.amountOfTetrominos--;
-            tet.conveyor.addButton.disabled = false;
-            TetrominoManager.DeleteTetrominoByKey(tetrominoKey);
-            tet.remove();
+            if (isPlaced) {
+                let tet = TetrominoManager.GetTetrominoByKey(tetrominoKey);
+                tet.conveyor.tetContainer.amountOfTetrominos--;
+                tet.conveyor.addButton.disabled = false;
+                TetrominoManager.DeleteTetrominoByKey(tetrominoKey);
+                tet.remove();
+            }
         });
     }
 
