@@ -6,13 +6,15 @@ class Tetromino extends HTMLElement {
     cargoType;
     positions;
     color;
+    key;
 
-    constructor(shape, cType) {
+    constructor(shape, cType, key) {
         super();
         this.shape = shape;
         this.cargoType = cType;
         this.init();
         this.listeners();
+        this.key = key;
     }
 
     init() {
@@ -21,8 +23,8 @@ class Tetromino extends HTMLElement {
     }
 
     listeners() {
-        this.addEventListener("dragstart", function(e) {
-            e.dataTransfer.setData("text/uri-list", this)
+        this.addEventListener("dragstart", (e) => {
+            e.dataTransfer.setData("tetrominoKey", this.key);
             this.classList.add("dragging");
         });
 

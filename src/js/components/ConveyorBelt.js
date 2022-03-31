@@ -1,14 +1,19 @@
 import Tetromino from "./Tetromino.js";
 import TetrominoShape from "../enums/TetrominoShape.js";
 import CargoType from "../enums/CargoType.js";
+import TetContainer from "./TetContainer.js";
+import TetrominoManager from "./TetrominoManager.js";
+
 
 class ConveyorBelt extends HTMLElement {
     addButton;
+    tetContainer;
 
     constructor() {
         super();
         this.init();
         this.listeners();
+        this.createContainer();
     }
 
     init() {
@@ -36,6 +41,10 @@ class ConveyorBelt extends HTMLElement {
 
     listeners() {
         this.addButton.addEventListener("click", () => {
+            if (this.tetContainer.amountOfTetrominos >= 10) {
+                this.addButton.disabled = true;
+            }
+            this.tetContainer.addTet();
             this.addTetromino();
         });
     }
@@ -44,12 +53,28 @@ class ConveyorBelt extends HTMLElement {
         this.addButton.disabled = true;
 
         setTimeout(() => {
-            this.addButton.disabled = false;
-        }, 2000);
+            if (this.tetContainer.amountOfTetrominos < 10) {
+                this.addButton.disabled = false;
+            }
+        }, 3000);
 
-        let tet = new Tetromino(TetrominoShape.GetRandomTetroShape(), CargoType.GetRandomCargoType());
+        let uniqueKey = TetrominoManager.GenerateKey();
 
-        this.appendChild(tet.create());
+        let tet = new Tetromino(TetrominoShape.GetRandomTetroShape(), CargoType.GetRandomCargoType(), uniqueKey).create();
+        TetrominoManager.tetrominoArray.set(uniqueKey, tet);
+
+        tet.addEventListener("animationend", () => {
+            this.tetContainer.appendChild(tet);
+            tet.style.animation = "none";
+            tet.style.position = "static";
+        });
+
+        this.appendChild(tet);
+    }
+
+    createContainer() {
+        this.tetContainer = new TetContainer();
+        this.appendChild(this.tetContainer);
     }
 }
 
