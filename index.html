@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="module" src="src/js/app.js" defer></script>
+    <link rel="stylesheet" href="dist/style.css">
+</head>
+
+<body>
+    <div id="holder">
+        <hall-manager></hall-manager>
+        <weather-api></weather-api>
+        <button id="newConveyor" class="blue-button">Nieuwe lopende band</button>
+        <conveyor-belt></conveyor-belt>
+        <conveyor-belt></conveyor-belt>
+    </div>
+
+    <!--  Modal  -->
+    <form-window class="modal" id="modal">
+        <form class="modal-content" id="modal-content">
+            <div class="modal-header">
+                <h1>Maak een vrachtwagen aan</h1>
+                <span id="close-button">&#10006;</span>
+            </div>
+            <div class="input-fields">
+                <label for="width">Breedte (4 - 9)</label>
+                <input type="number" id="width" name="width" required min="4" max="9" value="4">
+                <label for="height">Hoogte (4 - 9)</label>
+                <input type="number" name="height" id="height" required min="4" max="9" value="4">
+                <label for="interval">Interval (10 - 180 sec)</label>
+                <input type="number" id="interval" min="10" max="180" value="30">
+            </div>
+
+            <div class="radio-buttons">
+                <div>
+                    <label for="cold-trans">Koud transport</label>
+                    <input type="radio" id="cold-trans" name="trans" value="0" required checked>
+                </div>
+                <div>
+                    <label for="frag-trans">Breekbaar transport</label>
+                    <input type="radio" id="frag-trans" name="trans" value="1" required>
+                </div>
+                <div>
+                    <label for="norm-trans">Algemeen transport</label>
+                    <input type="radio" id="norm-trans" name="trans" value="2" required>
+                </div>
+                <div>
+                    <label for="pal-trans">Pallets</label>
+                    <input type="radio" id="pal-trans" name="trans" value="3" required>
+                </div>
+                <div>
+                    <label for="fast-trans">Snel transport</label>
+                    <input type="radio" id="fast-trans" name="trans" value="4" required>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <label for="provinces">Kies één of meerdere bestemmingen</label>
+                <select multiple name="provinces" id="provinces">
+                    <option value="groningen">Groningen</option>
+                    <option value="friesland">Friesland</option>
+                    <option value="cairo">Cairo</option>
+                    <option value="amsterdam">Amsterdam</option>
+                    <option value="alert">Alert</option>
+                    <option value="arnhem">Arnhem</option>
+                    <option value="utrecht">Utrecht</option>
+                    <option value="parijs">Parijs</option>
+                    <option value="London">London</option>
+                </select>
+            </div>
+            <div>
+                <input type="submit" class="green-button" role="button" id="create-truck" value="Maak vrachtwagen">
+            </div>
+            <p id="errorText"></p>
+        </form>
+    </form-window>
+</body>
+
+</html>
