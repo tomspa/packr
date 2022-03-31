@@ -66,28 +66,29 @@ class WeatherApi extends HTMLElement {
 
     listeners() {
         this.input.addEventListener("keyup", (e) => {
-            if (e.keyCode === 13) {
-                fetch("http://api.weatherapi.com/v1/current.json?key=" +
-                        this.key + "&q=" + this.input.value + "&aqi=no")
-                    .then((response) => {
-                        if (response.status >= 200 && response.status <= 299) {
-                            return response.json();
-                        } else {
-                            throw Error(response.statusText);
-                        }
-                    })
-                    .then((json) => {
-                        this.weatherCondition = json.current.condition.code;
-                        this.lastCity = json.location.name;
-                        this.city.innerHTML = json.location.name;
-                        this.temperature.innerHTML = json.current.temp_c + "°";
-                        this.temperature_c = json.current.temp_c;
-                        this.img.src = json.current.condition.icon;
-                        this.label.style.color = "grey";
-                    }).catch((error) => {
-                        this.label.style.color = "red";
-                    });
-            }
+            if (e.keyCode === 13) this.fetchApiInfo();
+        });
+    }
+
+    fetchApiInfo() {
+        fetch("http://api.weatherapi.com/v1/current.json?key=" + this.key + "&q=" + this.input.value + "&aqi=no")
+            .then((response) => {
+                if (response.status >= 200 && response.status <= 299) {
+                    return response.json();
+                } else {
+                    throw Error(response.statusText);
+                }
+            })
+            .then((json) => {
+                this.weatherCondition = json.current.condition.code;
+                this.lastCity = json.location.name;
+                this.city.innerHTML = json.location.name;
+                this.temperature.innerHTML = json.current.temp_c + "°";
+                this.temperature_c = json.current.temp_c;
+                this.img.src = json.current.condition.icon;
+                this.label.style.color = "grey";
+            }).catch((error) => {
+            this.label.style.color = "red";
         });
     }
 
