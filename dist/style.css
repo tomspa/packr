@@ -71,7 +71,6 @@ td {
     color: red;
 }
 
-
 /* --------------------- Truck ------------------------*/
 
 .truck {
@@ -125,11 +124,12 @@ x-truck .truck-image {
 /* --------------------- Conveyor Belt ------------------------*/
 
 conveyor-belt {
-    width: 1000px;
+    width: 100%;
     height: 175px;
     display: flex;
     padding-left: 50px;
     position: relative;
+    padding-right: 600px;
 }
 
 conveyor-belt .belt {
@@ -344,13 +344,23 @@ hall-manager .create-truck {
 
 /* --------------------- Weather ------------------------*/
 
+weather-api {
+    display: inline-block;
+    position: absolute;
+    right: 8px;
+    border: 1px dashed gray;
+    padding: 0 25px 25px 25px;
+    z-index: 1;
+}
+
 .weather-api-wrapper {
-    display: flex;
+    display: inline-block;
     flex-direction: column;
     padding: 5px;
 }
 
 .weather-api-wrapper input {
+    display: block;
     width: 200px;
     height: fit-content;
     font-size: 30px;
@@ -358,14 +368,19 @@ hall-manager .create-truck {
 
 .weather-api-wrapper label {
     font-size: 20px;
+    display: block;
+    text-align: center;
+    color: gray;
 }
 
 .weather-api-img-wrapper {
-    display: flex;
-    flex-direction: row;
+    width: 130px;
+    margin: 0 auto;
+    display: block;
 }
 
 .weather-api-img-wrapper img {
+    display: inline-block;
     max-height: 50px;
     max-width: 50px;
 }
@@ -378,11 +393,7 @@ hall-manager .create-truck {
     margin: 0;
 }
 
-.wrap {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+weather-api .wrap {
     float: none;
     overflow: hidden;
-    margin-right: 190px;
 }

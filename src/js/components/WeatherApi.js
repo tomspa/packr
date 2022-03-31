@@ -49,14 +49,14 @@ class WeatherApi extends HTMLElement {
         this.apiInfoDiv.appendChild(this.temperature);
         this.apiInfoDiv.appendChild(this.city);
 
-        this.imgWrapper.appendChild(this.img);
         this.imgWrapper.appendChild(this.apiInfoDiv);
+        this.imgWrapper.appendChild(this.img);
 
         this.wrapper = document.createElement("div");
         this.wrapper.classList.add("wrap");
 
-        this.wrapper.appendChild(this.wrapperDiv);
         this.wrapper.appendChild(this.imgWrapper);
+        this.wrapper.appendChild(this.wrapperDiv);
 
         this.appendChild(this.wrapper);
     }
@@ -77,7 +77,7 @@ class WeatherApi extends HTMLElement {
                         this.city.innerHTML = json.location.name;
                         this.temperature.innerHTML = json.current.temp_c + "°";
                         this.img.src = json.current.condition.icon;
-                        this.label.style.color = "black";
+                        this.label.style.color = "grey";
                     }).catch((error) => {
                         this.label.style.color = "red";
                     });
