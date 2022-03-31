@@ -143,6 +143,17 @@ x-truck:hover .tooltip {
     visibility: visible;
 }
 
+x-truck .errorMessage {
+    position: absolute;
+    color: red;
+    font-size: 15px;
+    padding: 5px;
+    right: -20px;
+    border-radius: 5px;
+    top: 30px;
+    background: rgba(255, 255, 255, 0.67);
+}
+
 @keyframes fadeOut {
     0% {
         opacity: 1;

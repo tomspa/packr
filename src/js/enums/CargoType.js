@@ -57,7 +57,10 @@ class CargoType {
                     WCC == 1198 || WCC == 1201 || WCC == 1240 || WCC == 1243 ||
                     WCC == 1246 || WCC == 1273 || WCC == 1276 || WCC == 5 || WCC == 1072 ||
                     WCC == 1147 || WCC == 1168 || WCC == 1171 || WCC == 1237 || WCC == 1261 ||
-                    WCC == 1264 || WCC == 1237) {
+                    WCC == 1264 || WCC == 1237 || WCC == 1066 || WCC == 1114 || WCC == 1210 ||
+                    WCC == 1213 || WCC == 1216 || WCC == 1219 || WCC == 1222 || WCC == 1225 ||
+                    WCC == 1255 || WCC == 1258 || WCC == 1279 || WCC == 1282 || WCC == 1069 ||
+                    WCC == 1204 || WCC == 1207 || WCC == 1249 || WCC == 1252) {
                     return false;
                 }
                 return true;
@@ -67,6 +70,22 @@ class CargoType {
                 return true;
             case 4:
                 return true;
+        }
+    }
+
+    static GetDriveAwayError(cargoType) {
+        cargoType = parseInt(cargoType);
+        switch (cargoType) {
+            case 0:
+                return "Te warm om te rijden (maximaal 20°)";
+            case 1:
+                return "Kan niet rijden bij regen of sneeuw";
+            case 2:
+                return "";
+            case 3:
+                return "";
+            case 4:
+                return "";
         }
     }
 }

@@ -14,6 +14,7 @@ class Truck extends HTMLElement {
     radius;
     radiusTooltip;
     weatherApi;
+    errorMessage;
 
     constructor(width, height, interval, cargoType, radius) {
         super();
@@ -52,6 +53,8 @@ class Truck extends HTMLElement {
             this.appendChild(this.radiusTooltip);
         }
 
+        this.errorMessage = document.createElement("div");
+        this.errorMessage.classList.add("errorMessage");
         this.timer = document.createElement("h1");
         this.timer.classList.add("timer");
         this.button = document.createElement("button")
@@ -75,6 +78,7 @@ class Truck extends HTMLElement {
             }
         }
 
+        this.appendChild(this.errorMessage);
         this.appendChild(this.timer);
         this.appendChild(this.button);
         this.appendChild(image);
@@ -119,11 +123,14 @@ class Truck extends HTMLElement {
 
     listeners() {
         this.button.onclick = () => {
-            if (this.canDriveAway()) {
-                if (this.removeFromTooltip()) {
-                    this.driveAway();
+            let hasRadius = this.truckHasRadius();
+
+            if (hasRadius) {
+                if (this.canDriveAway()) {
+                    this.truckRadiusRemove(hasRadius);
+                    this.driveAway(hasRadius);
                 } else {
-                    console.log("ken nie rijde");
+                    this.showError();
                 }
             } else if (this.radius.length <= 0) {
                 this.fadeAway();
@@ -159,18 +166,23 @@ class Truck extends HTMLElement {
         })
     }
 
-    removeFromTooltip() {
+    truckHasRadius() {
         if (this.weatherApi.lastCity == undefined) {
-            this.weatherApi.alertFill();
-            return;
+            return false;
         }
 
         let foundRadius = this.radius.find((radius) => {
             return radius == this.weatherApi.lastCity.toLowerCase();
         });
 
-        if (!foundRadius) return false;
+        if (foundRadius) {
+            return foundRadius;
+        } else {
+            return false;
+        }
+    }
 
+    truckRadiusRemove(foundRadius) {
         this.radius = this.radius.filter((r) => { return r != foundRadius });
         let tooltipRadii = this.radiusTooltip.getElementsByClassName("radius");
 
@@ -179,8 +191,6 @@ class Truck extends HTMLElement {
                 tooltipRadii[i].style.display = "none";
             }
         }
-
-        return true;
     }
 
     changeButton() {
@@ -189,7 +199,9 @@ class Truck extends HTMLElement {
         this.button.innerHTML = "&#10006;";
     }
 
-    driveAway() {
+    driveAway(hasRadius) {
+        console.log(hasRadius);
+
         if (this.radius.length <= 0) {
             this.radiusTooltip.remove();
         }
@@ -201,6 +213,7 @@ class Truck extends HTMLElement {
         setTimeout(() => {
             this.reset();
             this.style.animation = "dive-back 4s ease-out forwards";
+            this.truckRadiusRemove(hasRadius);
 
             if (this.radius.length <= 0) {
                 this.changeButton();
@@ -224,6 +237,15 @@ class Truck extends HTMLElement {
 
     canDriveAway() {
         return CargoType.CanDriveAway(this.cargoType, this.weatherApi.weatherCondition, this.weatherApi.temperature_c);
+    }
+
+    showError() {
+        this.errorMessage.innerHTML = CargoType.GetDriveAwayError(this.cargoType);
+        this.errorMessage.style.display = "block";
+
+        setTimeout(() => {
+            this.errorMessage.style.display = "none";
+        }, 2000);
     }
 }
 
