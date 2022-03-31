@@ -41,7 +41,7 @@ class Truck extends HTMLElement {
             this.radiusTooltip = document.createElement("div");
             this.radiusTooltip.classList.add("tooltip");
 
-            for (let i = 0; i < this.radius.length; i++ ) {
+            for (let i = 0; i < this.radius.length; i++) {
                 let toolElement = document.createElement("p");
                 toolElement.innerHTML = this.radius[i];
                 toolElement.classList.add("radius");
@@ -98,14 +98,13 @@ class Truck extends HTMLElement {
             for (let x = 0; x < 4; x++) {
                 if (fillPositions.length == 4) break;
 
-                if (tet.positions[y][x] == 1 && (truckPosY - yIncrease < 0 || truckPosX + x > this.width -1)) return;
+                if (tet.positions[y][x] == 1 && (truckPosY - yIncrease < 0 || truckPosX + x > this.width - 1)) return;
 
                 let truckCell = this.cells[truckPosY - yIncrease][truckPosX + x];
 
                 if (tet.positions[y][x] == 1 && !truckCell.isFilled) {
                     fillPositions.push(truckCell)
-                }
-                else if (tet.positions[y][x] == 1){
+                } else if (tet.positions[y][x] == 1) {
                     return;
                 }
             }
@@ -120,11 +119,16 @@ class Truck extends HTMLElement {
 
     listeners() {
         this.button.onclick = () => {
-            if (this.removeFromTooltip()) {
-                this.driveAway();
-            }
-            else {
+            if (this.canDriveAway()) {
+                if (this.removeFromTooltip()) {
+                    this.driveAway();
+                } else {
+                    console.log("ken nie rijde");
+                }
+            } else if (this.radius.length <= 0) {
                 this.fadeAway();
+            } else {
+                this.weatherApi.alertFill();
             }
         }
     }
@@ -186,6 +190,10 @@ class Truck extends HTMLElement {
     }
 
     driveAway() {
+        if (this.radius.length <= 0) {
+            this.radiusTooltip.remove();
+        }
+
         this.style.animation = "dive-away 4s ease-in forwards"
         this.button.style.display = "none";
         this.timerCount();
@@ -205,11 +213,17 @@ class Truck extends HTMLElement {
     }
 
     fadeAway() {
+        this.button.style.display = "none";
+        this.timer.style.display = "none";
         this.style.animation = "fadeOut 3s linear";
 
         setTimeout(() => {
             this.remove();
         }, 3000)
+    }
+
+    canDriveAway() {
+        return CargoType.CanDriveAway(this.cargoType, this.weatherApi.weatherCondition, this.weatherApi.temperature_c);
     }
 }
 

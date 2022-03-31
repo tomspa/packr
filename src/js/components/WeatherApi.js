@@ -5,7 +5,9 @@ class WeatherApi extends HTMLElement {
     apiInfoDiv;
     label;
     temperature;
+    temperature_c;
     city;
+    weatherCondition;
     img;
     wrapper;
     lastCity;
@@ -75,9 +77,11 @@ class WeatherApi extends HTMLElement {
                         }
                     })
                     .then((json) => {
+                        this.weatherCondition = json.current.condition.code;
                         this.lastCity = json.location.name;
                         this.city.innerHTML = json.location.name;
                         this.temperature.innerHTML = json.current.temp_c + "°";
+                        this.temperature_c = json.current.temp_c;
                         this.img.src = json.current.condition.icon;
                         this.label.style.color = "grey";
                     }).catch((error) => {
