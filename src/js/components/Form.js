@@ -69,6 +69,11 @@ class FormWindow extends HTMLElement {
             return;
         }
 
+        if (selected.length <= 0) {
+            this.errorText.innerHTML = "De vrachtwagen moet minstens één bestemming hebben";
+            return;
+        }
+
         this.errorText.innerHTML = "";
 
         hall.addTruck(width.value, height.value, interval.value, radio, selected);

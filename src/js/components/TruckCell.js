@@ -20,9 +20,6 @@ class TruckCell extends HTMLElement {
     }
 
     listeners() {
-        this.addEventListener("click", function() {
-        });
-
         this.addEventListener("dragover", function(e) {
             e.preventDefault();
         });
@@ -32,13 +29,6 @@ class TruckCell extends HTMLElement {
 
             let tetrominoKey = e.dataTransfer.getData("tetrominoKey");
             this.truck.placeTetromino(this.x, this.y, tetrominoKey);
-
-            // if (this.truck.cargoType == tetType) {
-            //     console.log("first if")
-            //     if (this.truck.canPlace(this.x, this.y, tetShape)) {
-            //         console.log("second if")
-            //     }
-            // }
         });
     }
 

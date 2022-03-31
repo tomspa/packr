@@ -8,6 +8,7 @@ td {
     height: 20px;
 }
 
+
 /* --------------------- modal styling ------------------------*/
 
 .modal {
@@ -71,6 +72,7 @@ td {
     color: red;
 }
 
+
 /* --------------------- Truck ------------------------*/
 
 .truck {
@@ -94,7 +96,8 @@ x-truck {
     position: relative;
 }
 
-x-truck .blue-button, x-truck .red-button {
+x-truck .blue-button,
+x-truck .red-button {
     padding: 0;
 }
 
@@ -132,7 +135,7 @@ x-truck .tooltip {
     visibility: hidden;
     position: absolute;
     z-index: 1;
-    right: -90px;
+    right: -80px;
 }
 
 x-truck .tooltip p {
@@ -238,6 +241,7 @@ conveyor-belt .belt .roller-end {
     height: 10px;
 }
 
+
 /* --------------------- General ------------------------*/
 
 .green-button:hover,
@@ -317,6 +321,7 @@ conveyor-belt .belt .roller-end {
     }
 }
 
+
 /* --------------------- Hall ------------------------*/
 
 hall-div {
@@ -395,6 +400,7 @@ hall-manager .create-truck {
     vertical-align: bottom;
     flex-shrink: 0
 }
+
 
 /* --------------------- Weather ------------------------*/
 
